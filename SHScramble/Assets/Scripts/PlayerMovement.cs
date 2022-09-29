@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(grounded);
         grounded = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsGround);
 
         if(!grounded)
