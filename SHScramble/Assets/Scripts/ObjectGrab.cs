@@ -16,12 +16,14 @@ public class ObjectGrab : MonoBehaviour
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
         rb.useGravity = false;
+        this.gameObject.tag = "inHand";
     }
 
     public void Drop()
     {
         this.objectGrabPointTransform = null;
         rb.useGravity = true;
+        this.gameObject.tag = "pickup";
     }
     // Update is called once per frame
     void Update()
