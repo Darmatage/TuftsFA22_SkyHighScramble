@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 1.5f;
 
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    public float groundDistance = 0.2f;
     public LayerMask whatIsGround;
 
 
@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         grounded = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsGround);
+        Debug.Log(grounded);
 
         if(!grounded)
             StopBobbing();
@@ -69,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
-        velocity.y += gravity * Time.deltaTime;
+        velocity.y += gravity * 3 * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
     }
