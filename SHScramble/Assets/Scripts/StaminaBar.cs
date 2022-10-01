@@ -13,9 +13,9 @@ public class StaminaBar : MonoBehaviour
     public float dValue;
 
     public Image back;
-    public float initialStam;
-    public bool decrease;
-    public bool filling;
+    private float initialStam;
+    private bool decrease;
+    private bool filling;
 
 
     public bool tired;
@@ -37,7 +37,7 @@ public class StaminaBar : MonoBehaviour
     {
         if (stamina >= maxStamina)
             tired = false;
-        if (stamina <= 1)
+        if (stamina < 1)
             tired = true;
 
         if (tired)
@@ -54,7 +54,7 @@ public class StaminaBar : MonoBehaviour
             DecreaseEnergy();
         else if(initialStam > stamina)
         {
-            initialStam -= dValue * 2f * Time.deltaTime;
+            initialStam -= dValue * 1.7f * Time.deltaTime;
         }
         else if (stamina < maxStamina)
             IncreaseEnergy();
@@ -67,7 +67,10 @@ public class StaminaBar : MonoBehaviour
     private void DecreaseEnergy()
     {
         if (stamina >= 0)
+        {
             stamina -= dValue * Time.deltaTime;
+            initialStam -= dValue/2 * Time.deltaTime;
+        }
 
     }
 
