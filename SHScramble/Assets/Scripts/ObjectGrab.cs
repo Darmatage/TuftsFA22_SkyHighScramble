@@ -6,16 +6,21 @@ public class ObjectGrab : MonoBehaviour
 {
     private Transform objectGrabPointTransform;
     private Rigidbody rb;
+    private Collider bx;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        bx = GetComponent<Collider>();
     }
 
     public void Grab(Transform objectGrabPointTransform)
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
         rb.useGravity = false;
+        rb.constraints = RigidbodyConstraints.FreezePosition;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        bx.isTrigger = true;
         this.gameObject.tag = "inHand";
     }
 
