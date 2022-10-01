@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public float sprintSpeed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 1.5f;
+    public StaminaBar staminabar;
 
     public Transform groundCheck;
     public float groundDistance = 0.2f;
@@ -23,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        float stamina = staminabar.stamina;
         grounded = Physics.CheckSphere(groundCheck.position, groundDistance, whatIsGround);
-        Debug.Log(grounded);
 
         if(!grounded)
             StopBobbing();
@@ -56,10 +57,12 @@ public class PlayerMovement : MonoBehaviour
             if(Input.GetKeyUp(KeyCode.A))
                 StopBobbing();
 
-            if(Input.GetButtonUp("Sprint"))
+            if(Input.GetButtonUp("Sprint") || (stamina <= 1))
                 speed = defaultSpeed;
-            else if(Input.GetButton("Sprint") == true)
+            else if((Input.GetButton("Sprint") == true) && (stamina > 0) && !staminabar.tired)
+            {
                 speed = sprintSpeed;
+            }
         }
 
         controller.Move(move * speed *Time.deltaTime);
