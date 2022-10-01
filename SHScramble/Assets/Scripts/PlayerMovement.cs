@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     Vector3 velocity;
-    bool grounded;
+    public bool grounded;
 
 
     void Update()

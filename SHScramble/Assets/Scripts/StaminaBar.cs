@@ -17,6 +17,8 @@ public class StaminaBar : MonoBehaviour
     private bool decrease;
     private bool filling;
 
+    public PlayerMovement pm;
+
 
     public bool tired;
     public float lerpSpeed;
@@ -50,7 +52,7 @@ public class StaminaBar : MonoBehaviour
 
 
 
-        if (Input.GetKey(KeyCode.LeftShift) && (stamina > 0) && !tired)
+        if (Input.GetKey(KeyCode.LeftShift) && (stamina > 0) && !tired && pm.grounded)
             DecreaseEnergy();
         else if(initialStam > stamina)
         {
