@@ -19,7 +19,7 @@ public class NPCInteract : MonoBehaviour
                 GameObject objectGrab = GameObject.FindGameObjectWithTag("inHand");
                 //Vector3 newScale = Vector3.Lerp(transform.localScale, Vector3.zero, 1.4f * Time.deltaTime);
                 objectGrab.transform.localScale = Vector3.Lerp(objectGrab.transform.localScale, Vector3.zero, 1.4f * Time.deltaTime);
-                Destroy(objectGrab);
+                //Destroy(objectGrab);
             }
         }
     }
