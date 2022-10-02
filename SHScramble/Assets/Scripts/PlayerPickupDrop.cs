@@ -14,6 +14,7 @@ public class PlayerPickupDrop : MonoBehaviour
     private ObjectGrab objectGrab;
     private BoxPickup bp;
     public bool grabbing;
+    private string curTag;
 
     // Update is called once per frame
     void Update()
@@ -28,7 +29,7 @@ public class PlayerPickupDrop : MonoBehaviour
                     {
                         objectGrab = bp.Summon();
                         grabbing = true;
-                        objectGrab.Grab(objectGrabPointTransform);
+                        curTag = objectGrab.Grab(objectGrabPointTransform);
                     }
                 }
 
@@ -36,12 +37,12 @@ public class PlayerPickupDrop : MonoBehaviour
                     if (raycastHit.transform.TryGetComponent(out objectGrab))
                     {
                         grabbing = true;
-                        objectGrab.Grab(objectGrabPointTransform);
+                        curTag = objectGrab.Grab(objectGrabPointTransform);
                     }
             }
             else
             {
-                objectGrab.Drop();
+                objectGrab.Drop(curTag);
                 objectGrab = null;
                 grabbing = false;
             }

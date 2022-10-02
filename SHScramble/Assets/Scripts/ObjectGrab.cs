@@ -10,10 +10,10 @@ public class ObjectGrab : MonoBehaviour
     private Rigidbody rb;
     private Collider bx;
     public Image item;
+    private string curTag;
 
     [Header("Sprites")]
-    public Sprite chips;
-    public Sprite soda;
+    public Sprite[] items;
 
     private void Awake()
     {
@@ -21,7 +21,7 @@ public class ObjectGrab : MonoBehaviour
         bx = GetComponent<Collider>();
     }
 
-    public void Grab(Transform objectGrabPointTransform)
+    public string Grab(Transform objectGrabPointTransform)
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
         rb.useGravity = false;
@@ -31,14 +31,16 @@ public class ObjectGrab : MonoBehaviour
         ChangeItem();
         item.GetComponent<Animator>().Play("ItemPU");
 
+        curTag = this.gameObject.tag;
         this.gameObject.tag = "inHand";
+        return curTag;
     }
 
-    public void Drop()
+    public void Drop(string curTag)
     {
         this.objectGrabPointTransform = null;
         rb.useGravity = true;
-        this.gameObject.tag = "pickup";
+        this.gameObject.tag = curTag;
         rb.constraints = RigidbodyConstraints.None;
         bx.isTrigger = false;
         item.GetComponent<Animator>().Play("ItemDrop");
@@ -48,8 +50,6 @@ public class ObjectGrab : MonoBehaviour
     {
         if (objectGrabPointTransform != null)
         {
-            //float lerpSpeed = 5f;
-            //Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
             rb.velocity = (Vector3.zero);
             rb.MovePosition(objectGrabPointTransform.position);
         }
@@ -58,8 +58,18 @@ public class ObjectGrab : MonoBehaviour
     public void ChangeItem()
     {
         if(this.gameObject.tag == "Chips")
-            item.sprite = chips;
+            item.sprite = items[0];
         if(this.gameObject.tag == "Soda")
-            item.sprite = soda;
+            item.sprite = items[1];
+        if(this.gameObject.tag == "BarfBag")
+            item.sprite = items[2];
+        if(this.gameObject.tag == "Headphones")
+            item.sprite = items[3];
+        if(this.gameObject.tag == "Water")
+            item.sprite = items[4];
+        if(this.gameObject.tag == "Wine")
+            item.sprite = items[5];
+        if(this.gameObject.tag == "Napkin")
+            item.sprite = items[6];
     }
 }

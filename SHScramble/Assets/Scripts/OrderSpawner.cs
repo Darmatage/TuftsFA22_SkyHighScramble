@@ -33,22 +33,22 @@ public class OrderSpawner : MonoBehaviour
     }
  
     void OnCollisionEnter(Collision other) {
-         if (other.gameObject.tag == "pickup") {
-            if (other.gameObject.name == "Chips" && order == chips) {
+         if (other.gameObject.layer == LayerMask.NameToLayer("pickup")) {
+            if (other.gameObject.tag == "Chips" && order == chips) {
                 Destroy(other.gameObject);
                 Destroy(orderDestroy);
                 LeanTween.pause(barObj);
                 LeanTween.scaleX(barObj, .88f, 0);
                 orderFinished = true;
                 //get point
-                } else if (other.gameObject.name == "Soda" && order == soda) {
+                } else if (other.gameObject.tag == "Soda" && order == soda) {
                     Destroy(other.gameObject);
                     Destroy(orderDestroy);
                     LeanTween.pause(barObj);
                     LeanTween.scaleX(barObj, .88f, 0);
                     orderFinished = true;
                     //get point
-                } else if (other.gameObject.name == "Chips" && order == soda) {
+                } else if (other.gameObject.tag == "Chips" && order == soda) {
                     Destroy(other.gameObject);
                     LeanTween.scaleX(barObj, 0, (time / 3));
                 } else if (other.gameObject.name == "Soda" && order == chips) {

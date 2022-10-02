@@ -15,11 +15,8 @@ public class NPCInteract : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) && pd.grabbing)
             {
-                Debug.Log("Hi");
                 GameObject objectGrab = GameObject.FindGameObjectWithTag("inHand");
-                //Vector3 newScale = Vector3.Lerp(transform.localScale, Vector3.zero, 1.4f * Time.deltaTime);
                 objectGrab.transform.localScale = Vector3.Lerp(objectGrab.transform.localScale, Vector3.zero, 1.4f * Time.deltaTime);
-                //Destroy(objectGrab);
             }
         }
     }

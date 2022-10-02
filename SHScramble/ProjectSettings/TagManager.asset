@@ -10,6 +10,11 @@ TagManager:
   - Chips
   - Soda
   - Box
+  - Water
+  - Wine
+  - Napkin
+  - Headphones
+  - BarfBag
   layers:
   - Default
   - TransparentFX

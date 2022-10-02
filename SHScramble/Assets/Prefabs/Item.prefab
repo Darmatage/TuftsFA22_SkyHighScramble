@@ -128,5 +128,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
-  chips: {fileID: 21300000, guid: 4ffbafd3bf3f2b948a9f326e5fbe9172, type: 3}
-  soda: {fileID: 21300000, guid: 39dc631fccb2421499a2e3c7ffcb56bc, type: 3}
+  items:
+  - {fileID: 21300000, guid: 39dc631fccb2421499a2e3c7ffcb56bc, type: 3}
+  - {fileID: 21300000, guid: 4ffbafd3bf3f2b948a9f326e5fbe9172, type: 3}
+  - {fileID: 21300000, guid: 8854756f4f564f2458c0be2f366de3e6, type: 3}
+  - {fileID: 21300000, guid: 275437eaf83422a4eba53eb403591a28, type: 3}
+  - {fileID: 21300000, guid: 9620a3ec1c14d0a4eab39f7ab3a95886, type: 3}
+  - {fileID: 21300000, guid: 5f9ba6b966141ea4a95e040e6c244091, type: 3}
+  - {fileID: 21300000, guid: ed2477560299f8942bb2d00e317000c2, type: 3}
