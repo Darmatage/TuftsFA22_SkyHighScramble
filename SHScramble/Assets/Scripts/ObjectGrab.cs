@@ -57,9 +57,9 @@ public class ObjectGrab : MonoBehaviour
 
     public void ChangeItem()
     {
-        if(this.gameObject.name == "Chips")
+        if(this.gameObject.tag == "Chips")
             item.sprite = chips;
-        if(this.gameObject.name == "Soda")
+        if(this.gameObject.tag == "Soda")
             item.sprite = soda;
     }
 }
