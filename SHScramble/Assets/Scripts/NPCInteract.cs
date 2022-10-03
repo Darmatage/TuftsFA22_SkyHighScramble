@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NPCInteract : MonoBehaviour
 {
     private GameObject triggeringNPC;
     private bool triggering;
     public PlayerPickupDrop pd;
-
+    public Image button;
 
     void Update()
     {
@@ -25,6 +26,7 @@ public class NPCInteract : MonoBehaviour
     {
         if (other.tag == "NPC")
         {
+            button.GetComponent<EButton>().Near("Talk");
             triggering = true;
             triggeringNPC = other.gameObject;
         }
@@ -34,6 +36,7 @@ public class NPCInteract : MonoBehaviour
     {
         if (other.tag == "NPC")
         {
+            button.GetComponent<EButton>().Away();
             triggering = false;
             triggeringNPC = null;
         }

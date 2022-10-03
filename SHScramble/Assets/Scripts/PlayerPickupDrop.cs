@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerPickupDrop : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerPickupDrop : MonoBehaviour
     private ObjectGrab objectGrab;
     private BoxPickup bp;
     public bool grabbing;
+    public Image button;
     private string curTag;
 
     // Update is called once per frame
