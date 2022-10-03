@@ -26,14 +26,13 @@ public class OrderSpawner : MonoBehaviour
     void Start()
     {
         rangeEnd = orders.Length - 1;
-        exclaim.transform.localScale = Vector3.zero;
+        exclaim.GetComponent<Animator>().Play("ExclaimNull");
         current = "none";
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(current);
         timeToSpawn = Random.Range(spawnRangeStart, spawnRangeEnd);
         if (orderFinished) {
             spawnTimer += 0.01f;
@@ -56,7 +55,7 @@ public class OrderSpawner : MonoBehaviour
  
     public void spawnOrder(){
         current = "order";
-        exclaim.transform.localScale = Vector3.zero;
+        exclaim.GetComponent<Animator>().Play("ExclaimNull");
 
         LeanTween.scaleX(barObj, 0, time);
         orderFinished = false;
@@ -68,7 +67,7 @@ public class OrderSpawner : MonoBehaviour
     void spawnExclaim()
     {
         current = "!";
-        exclaim.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        exclaim.GetComponent<Animator>().Play("ExclaimMain");
     }
  
     void OnCollisionEnter(Collision other) {
