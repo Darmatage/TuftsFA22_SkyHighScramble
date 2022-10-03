@@ -5,8 +5,7 @@ using UnityEngine.UI;
  
 public class OrderSpawner : MonoBehaviour
 {
-    public GameObject chips;
-    public GameObject soda;
+    public GameObject[] orders;
     public Transform spawnPoint;
     public GameObject order;
     private int rangeEnd;
@@ -26,60 +25,11 @@ public class OrderSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rangeEnd = orders.Length - 1;
         exclaim.transform.localScale = Vector3.zero;
         current = "none";
     }
- 
-    public void spawnOrder(){
-        current = "order";
-        exclaim.transform.localScale = Vector3.zero;
 
-        LeanTween.scaleX(barObj, 0, time);
-        orderFinished = false;
-        int SOnum = Random.Range(1,3);
-        if (SOnum == 1) { order = chips; }
-        else if (SOnum == 2) { order = soda; }
-        orderDestroy = Instantiate(order, spawnPoint.position, Quaternion.identity);
-    }
-
-    void spawnExclaim()
-    {
-        current = "!";
-        exclaim.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-    }
- 
-    void OnCollisionEnter(Collision other) {
-         if (other.gameObject.layer == LayerMask.NameToLayer("pickup")) {
-            if (other.gameObject.tag == "Chips" && order == chips) {
-                Destroy(other.gameObject);
-                Destroy(orderDestroy);
-                LeanTween.pause(barObj);
-                LeanTween.scaleX(barObj, .88f, 0);
-                orderFinished = true;
-                current = "none";
-                //get point
-                } else if (other.gameObject.tag == "Soda" && order == soda) {
-                    Destroy(other.gameObject);
-                    Destroy(orderDestroy);
-                    LeanTween.pause(barObj);
-                    LeanTween.scaleX(barObj, .88f, 0);
-                    orderFinished = true;
-                    current = "none";
-                    //get point
-                } else if (other.gameObject.tag == "Chips" && order == soda) {
-                    Destroy(other.gameObject);
-                    current = "none";
-                    LeanTween.scaleX(barObj, 0, (time / 3));
-                } else if (other.gameObject.name == "Soda" && order == chips) {
-                    Destroy(other.gameObject);
-                    current = "none";
-                    LeanTween.scaleX(barObj, 0, (time / 3));
-                }
-         }
-     }
-
- 
- 
     // Update is called once per frame
     void Update()
     {
@@ -103,6 +53,49 @@ public class OrderSpawner : MonoBehaviour
         }
        
     }
+ 
+    public void spawnOrder(){
+        current = "order";
+        exclaim.transform.localScale = Vector3.zero;
+
+        LeanTween.scaleX(barObj, 0, time);
+        orderFinished = false;
+        int SOnum = Random.Range(0, orders.Length);
+        order = orders[SOnum];
+        orderDestroy = Instantiate(order, spawnPoint.position, Quaternion.identity);
+    }
+
+    void spawnExclaim()
+    {
+        current = "!";
+        exclaim.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+    }
+ 
+    void OnCollisionEnter(Collision other) {
+         if (other.gameObject.layer == LayerMask.NameToLayer("pickup")) {
+            if (order == null) {
+                Destroy(other.gameObject);
+                current = "none";
+            }
+            else {
+                string tag = other.gameObject.tag;
+                string orderName = order.gameObject.name;
+                if (tag == orderName) {
+                    Destroy(other.gameObject);
+                    Destroy(orderDestroy);
+                    LeanTween.pause(barObj);
+                    LeanTween.scaleX(barObj, .88f, 0);
+                    orderFinished = true;
+                    current = "none";
+                    //get point
+                } else if (tag != orderName) {
+                    Destroy(other.gameObject);
+                    current = "none";
+                    LeanTween.scaleX(barObj, 0, (time / 3));
+                }
+            }
+         }
+     }  
      
 }
 
