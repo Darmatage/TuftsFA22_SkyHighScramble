@@ -9,15 +9,19 @@ public class NPCInteract : MonoBehaviour
     private bool triggering;
     public PlayerPickupDrop pd;
     public Image button;
+    public OrderSpawner os;
 
     void Update()
     {
-        if (triggering)
+        if (triggering && Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.E) && pd.grabbing)
+            if (os.current == "!")
             {
-                GameObject objectGrab = GameObject.FindGameObjectWithTag("inHand");
-                objectGrab.transform.localScale = Vector3.Lerp(objectGrab.transform.localScale, Vector3.zero, 1.4f * Time.deltaTime);
+                os.spawnOrder();
+            }
+            else if (os.current == "order")
+            {
+
             }
         }
     }
@@ -26,7 +30,8 @@ public class NPCInteract : MonoBehaviour
     {
         if (other.tag == "NPC")
         {
-            button.GetComponent<EButton>().Near("Talk");
+            if ((os.current == "!") || (os.current == "order"))
+                button.GetComponent<EButton>().Near("Talk");
             triggering = true;
             triggeringNPC = other.gameObject;
         }

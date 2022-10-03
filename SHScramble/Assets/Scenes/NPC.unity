@@ -823,8 +823,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ebut: {fileID: 541722815}
-  text: {fileID: 0}
-  bar: {fileID: 0}
+  text: {fileID: 1669873927}
+  bar: {fileID: 258823179}
 --- !u!1 &541722813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1364,7 +1364,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -61.69995, y: 64.599976}
+  m_AnchoredPosition: {x: -61.1, y: 64.2}
   m_SizeDelta: {x: 220, y: 220}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &737299271
@@ -3151,6 +3151,7 @@ GameObject:
   - component: {fileID: 1669873926}
   - component: {fileID: 1669873928}
   - component: {fileID: 1669873927}
+  - component: {fileID: 1669873929}
   m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
@@ -3220,6 +3221,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669873925}
   m_CullTransparentMesh: 1
+--- !u!225 &1669873929
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669873925}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1864877194 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 86896538872004127, guid: 6abda6b5a077bfd4d82e83df79441d96, type: 3}
@@ -3241,7 +3254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1877234275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3262,6 +3275,7 @@ MonoBehaviour:
     m_Bits: 512
   button: {fileID: 0}
   pickupDistance: 2
+  attempt: 0
   But: {fileID: 529336617}
 --- !u!4 &1877234276
 Transform:
