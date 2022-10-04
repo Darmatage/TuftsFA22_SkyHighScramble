@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Headphones
+  m_Name: BarfBag
   m_Shader: {fileID: 4800000, guid: be891319084e9d147b09d89e80ce60e0, type: 3}
   m_ValidKeywords:
   - _EMISSIVE_SIMPLE
@@ -490,15 +490,15 @@ Material:
     - _utsVersionY: 8
     - _utsVersionZ: 2
     m_Colors:
-    - _1st_ShadeColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
-    - _2nd_ShadeColor: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
+    - _1st_ShadeColor: {r: 0.39321324, g: 0.40392157, b: 0, a: 1}
+    - _2nd_ShadeColor: {r: 0.23354559, g: 0.2830189, b: 0, a: 1}
     - _AngelRingMaskColor: {r: 0, g: 1, b: 0, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
+    - _BaseColor: {r: 0.7300915, g: 0.8490566, b: 0, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMaskColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.49056596, g: 0.49056596, b: 0.49056596, a: 1}
+    - _Color: {r: 0.7300915, g: 0.8490566, b: 0, a: 1}
     - _ColorShift: {r: 0, g: 0, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
