@@ -20,7 +20,7 @@ public class OrderSpawner : MonoBehaviour
     public float spawnRangeEnd= 100.0f;
     private float timeToSpawn;
     private float spawnTimer = 0f;
-    private bool orderFinished = true;
+    public bool orderFinished = true;
  
     // Start is called before the first frame update
     void Start()
