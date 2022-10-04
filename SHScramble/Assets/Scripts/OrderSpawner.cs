@@ -20,7 +20,9 @@ public class OrderSpawner : MonoBehaviour
     public float spawnRangeEnd= 100.0f;
     private float timeToSpawn;
     private float spawnTimer = 0f;
-    public bool orderFinished = true;
+    private bool orderFinished = true;
+
+    public GameController gameController; 
  
     // Start is called before the first frame update
     void Start()
@@ -49,6 +51,7 @@ public class OrderSpawner : MonoBehaviour
             current = "none";
             LeanTween.pause(barObj);
             LeanTween.scaleX(barObj, .88f, 0);
+            gameController.AddScore (-1);  
         }
        
     }
@@ -86,7 +89,7 @@ public class OrderSpawner : MonoBehaviour
                     LeanTween.scaleX(barObj, .88f, 0);
                     orderFinished = true;
                     current = "none";
-                    //get point
+                    gameController.AddScore (1); //get points
                 } else if (tag != orderName) {
                     Destroy(other.gameObject);
                     current = "none";

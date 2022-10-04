@@ -5,15 +5,14 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
        public GameObject textGameObject;
        private int score;
-       public bool orderFinished;
 
        void Start () {
             score = 3;
             UpdateScore();
              }
 
-       public void MinusScore (int newScoreValue) {
-             score = score - newScoreValue;
+       public void AddScore (int newScoreValue) {
+             score = score + newScoreValue;
              UpdateScore ();
              }
 
