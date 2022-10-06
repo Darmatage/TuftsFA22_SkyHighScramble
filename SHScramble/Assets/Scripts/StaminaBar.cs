@@ -71,7 +71,7 @@ public class StaminaBar : MonoBehaviour
         if (stamina >= 0)
         {
             stamina -= dValue * Time.deltaTime;
-            initialStam -= dValue/2 * Time.deltaTime;
+            initialStam -= dValue/1.5f * Time.deltaTime;
         }
 
     }
