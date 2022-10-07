@@ -11,6 +11,8 @@ public class OrderSpawner : MonoBehaviour
     private int rangeEnd;
     private GameObject orderDestroy;
     public GameObject exclaim;
+    public Material[] mats;
+    public Material[] hiMats;
     public Material defaultRef;
     public Material highlightRef;
     public string current;
@@ -29,6 +31,13 @@ public class OrderSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //choose random Material
+        int matNum = Random.Range(0, mats.Length);
+        defaultRef = mats[matNum];
+        highlightRef = hiMats[matNum];
+        transform.GetChild(1).GetComponent<MeshRenderer>().material = defaultRef;
+
+
         timer = 25.0f;
         rangeEnd = orders.Length - 1;
         exclaim.GetComponent<Animator>().Play("ExclaimNull");

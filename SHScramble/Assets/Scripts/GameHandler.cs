@@ -7,27 +7,34 @@ public class GameHandler : MonoBehaviour
 {
     public OrderSpawner[] customer;
 
-    public float spawnRangeStart = 20.0f;
-    public float spawnRangeEnd= 35.0f;
+    private float spawnRangeStart = 4.0f;
+    private float spawnRangeEnd= 10.0f;
     private float timeToSpawn = 10.0f;
     private float spawnTimer = 0f;
+    [Header("Game Variables")]
     public int maxOrders = 3;
-    public float gameTime = 0;
+    private float gameTime = 0;
     public float happiness = 100f;
     public int numNPC;
 
     private int numOrders;
 
+    [Header("Object Refs")]
     public Slider tslider;
     public Slider happyMeter;
     public Image healthFill;
-    float lerpSpeed;
+    private float lerpSpeed;
+    [Header("NPC Seats")]
     public GameObject[] spots;
     public GameObject defaultNPC;
 
-    // Start is called before the first frame update
+
     void Start()
     {
+        //cap the number of npcs to seat #s
+        if (numNPC > spots.Length)
+            numNPC = spots.Length;
+
         customer = new OrderSpawner[numNPC];
         int tempNPC = numNPC;
         int fillNum = 0;
