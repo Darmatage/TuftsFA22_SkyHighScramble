@@ -15,6 +15,7 @@ TagManager:
   - Napkin
   - Headphones
   - BarfBag
+  - hasPlayer
   layers:
   - Default
   - TransparentFX

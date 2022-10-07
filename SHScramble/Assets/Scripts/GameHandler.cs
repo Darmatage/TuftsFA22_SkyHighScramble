@@ -14,7 +14,7 @@ public class GameHandler : MonoBehaviour
     public int maxOrders = 3;
     public float gameTime = 0;
     public float happiness = 100f;
-    private int numNPC;
+    public int numNPC;
 
     private int numOrders;
 
@@ -22,10 +22,27 @@ public class GameHandler : MonoBehaviour
     public Slider happyMeter;
     public Image healthFill;
     float lerpSpeed;
+    public GameObject[] spots;
+    public GameObject defaultNPC;
 
     // Start is called before the first frame update
     void Start()
     {
+        customer = new OrderSpawner[numNPC];
+        int tempNPC = numNPC;
+        int fillNum = 0;
+        while (tempNPC > 0)
+        {
+            int spotNum = Random.Range(0, spots.Length);
+            if (spots[spotNum].tag != "hasPlayer")
+            {
+                GameObject nick = Instantiate(defaultNPC, spots[spotNum].transform.position, Quaternion.identity);
+                spots[spotNum].tag = "hasPlayer";
+                customer[fillNum] = (nick.GetComponent<OrderSpawner>());
+                tempNPC--;
+                fillNum++;
+            }
+        }
         numNPC = customer.Length;
     }
 

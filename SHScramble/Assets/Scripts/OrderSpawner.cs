@@ -11,6 +11,8 @@ public class OrderSpawner : MonoBehaviour
     private int rangeEnd;
     private GameObject orderDestroy;
     public GameObject exclaim;
+    public Material defaultRef;
+    public Material highlightRef;
     public string current;
    
     public int time;
@@ -69,6 +71,7 @@ public class OrderSpawner : MonoBehaviour
     }
  
     void OnCollisionEnter(Collision other) {
+        Debug.Log("HELLO?");
          if (other.gameObject.layer == LayerMask.NameToLayer("pickup")) {
             Debug.Log("HELLO");
             if (order == null) {

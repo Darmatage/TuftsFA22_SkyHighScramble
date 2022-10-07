@@ -11,6 +11,9 @@ public class NPCInteract : MonoBehaviour
     public Image button;
     private OrderSpawner os;
 
+    private Material highlightRef;
+    private Material defaultRef;
+
     void Update()
     {
         if (triggering && Input.GetKeyDown(KeyCode.E))
@@ -28,12 +31,15 @@ public class NPCInteract : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("HELLO");
         if (other.tag == "NPC")
         {
             os = other.GetComponent<OrderSpawner>();
             if ((os.current == "!") || (os.current == "order"))
+            {
                 button.GetComponent<EButton>().Near("Talk");
+                highlightRef = other.GetComponent<OrderSpawner>().highlightRef;
+                other.transform.GetChild(1).GetComponent<MeshRenderer>().material = highlightRef;
+            }
             triggering = true;
             triggeringNPC = other.gameObject;
         }
@@ -47,6 +53,8 @@ public class NPCInteract : MonoBehaviour
             button.GetComponent<EButton>().Away();
             triggering = false;
             triggeringNPC = null;
+            defaultRef = other.GetComponent<OrderSpawner>().defaultRef;
+            other.transform.GetChild(1).GetComponent<MeshRenderer>().material = defaultRef;
         }
     }
 
