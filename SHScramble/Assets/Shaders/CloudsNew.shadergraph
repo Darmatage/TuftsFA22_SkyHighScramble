@@ -545,6 +545,20 @@
             },
             "m_InputSlot": {
                 "m_Node": {
+                    "m_Id": "47e6bde6160a4cafab153d9b0bf612ea"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "7190096771e345dea5a9e50b9b4bb47b"
+                },
+                "m_SlotId": 1
+            },
+            "m_InputSlot": {
+                "m_Node": {
                     "m_Id": "6e80fbba93904b1092a3d1f4167348fe"
                 },
                 "m_SlotId": 0
@@ -1100,10 +1114,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1345.5675048828125,
-            "y": 96.83248901367188,
-            "width": 125.5999755859375,
-            "height": 76.80001831054688
+            "x": -1216.800048828125,
+            "y": 102.39999389648438,
+            "width": 141.5999755859375,
+            "height": 33.600006103515628
         }
     },
     "m_Slots": [
@@ -2290,10 +2304,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 840.7999877929688,
-            "y": -39.200035095214847,
-            "width": 129.60003662109376,
-            "height": 117.59998321533203
+            "x": 770.4000854492188,
+            "y": -68.00000762939453,
+            "width": 129.59991455078126,
+            "height": 117.5999984741211
         }
     },
     "m_Slots": [
@@ -2402,7 +2416,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Scale",
     "m_StageCapability": 3,
-    "m_Value": 5.0,
+    "m_Value": 0.5,
     "m_DefaultValue": 500.0,
     "m_Labels": []
 }
@@ -2566,10 +2580,10 @@
         "m_Expanded": false,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 526.4000244140625,
-            "y": 161.6000213623047,
-            "width": 96.79998779296875,
-            "height": 100.79997253417969
+            "x": 502.4000549316406,
+            "y": 146.4000244140625,
+            "width": 84.80001831054688,
+            "height": 76.0
         }
     },
     "m_Slots": [
@@ -3044,9 +3058,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 645.5999755859375,
-            "y": 20.000015258789064,
-            "width": 129.60003662109376,
+            "x": 611.2000732421875,
+            "y": 12.800005912780762,
+            "width": 129.5999755859375,
             "height": 117.60000610351563
         }
     },
@@ -3705,10 +3719,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 1023.5529174804688,
-            "y": 31.552963256835939,
-            "width": 212.7999267578125,
-            "height": 337.6000061035156
+            "x": 950.4000854492188,
+            "y": -68.00001525878906,
+            "width": 212.79998779296876,
+            "height": 153.60003662109376
         }
     },
     "m_Slots": [
@@ -3728,7 +3742,7 @@
         "convert"
     ],
     "m_Precision": 0,
-    "m_PreviewExpanded": false,
+    "m_PreviewExpanded": true,
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
@@ -4153,10 +4167,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 446.3999938964844,
-            "y": 20.000015258789064,
-            "width": 128.00003051757813,
-            "height": 124.80003356933594
+            "x": 446.40008544921877,
+            "y": 12.7999849319458,
+            "width": 128.0,
+            "height": 124.79998779296875
         }
     },
     "m_Slots": [
@@ -5256,7 +5270,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Scale",
     "m_StageCapability": 3,
-    "m_Value": 11.430000305175782,
+    "m_Value": 0.10000000149011612,
     "m_DefaultValue": 10.0,
     "m_Labels": []
 }
@@ -5648,7 +5662,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Scale",
     "m_StageCapability": 3,
-    "m_Value": 10.0,
+    "m_Value": 1.0,
     "m_DefaultValue": 500.0,
     "m_Labels": []
 }

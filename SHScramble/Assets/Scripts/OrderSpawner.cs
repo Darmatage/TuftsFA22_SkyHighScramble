@@ -13,45 +13,41 @@ public class OrderSpawner : MonoBehaviour
     public GameObject exclaim;
     public string current;
    
-    public GameObject barObj;
     public int time;
+    public float timer;
  
-    public float spawnRangeStart = 20.0f;
-    public float spawnRangeEnd= 100.0f;
-    private float timeToSpawn;
-    private float spawnTimer = 0f;
-    private bool orderFinished = true;
+    public bool hasOrder = false;
 
-    public GameController gameController; 
+    public GameHandler gameHandler; 
  
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        timer = 25.0f;
         rangeEnd = orders.Length - 1;
         exclaim.GetComponent<Animator>().Play("ExclaimNull");
         current = "none";
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        timeToSpawn = Random.Range(spawnRangeStart, spawnRangeEnd);
-        if (orderFinished) {
-            spawnTimer += 0.01f;
-            if (spawnTimer >= timeToSpawn){
-                spawnExclaim();
-                spawnTimer = 0f;
+        if(hasOrder)
+        {
+            if(timer <= 0) {
+                Destroy(orderDestroy);
+                hasOrder = false;
+                current = "none";
+                exclaim.GetComponent<Animator>().Play("ExclaimNull");
+
+                gameHandler.FailedOrder();  
             }
-        } 
-        
-        else if(barObj.gameObject.transform.localScale.x == 0) {
-            //lose point
-            Destroy(orderDestroy);
-            orderFinished = true;
-            current = "none";
-            LeanTween.pause(barObj);
-            LeanTween.scaleX(barObj, .88f, 0);
-            gameController.AddScore (-1);  
+            else
+                timer -= 0.01f;
         }
        
     }
@@ -60,24 +56,23 @@ public class OrderSpawner : MonoBehaviour
         current = "order";
         exclaim.GetComponent<Animator>().Play("ExclaimNull");
 
-        LeanTween.scaleX(barObj, 0, time);
-        orderFinished = false;
         int SOnum = Random.Range(0, orders.Length);
         order = orders[SOnum];
         orderDestroy = Instantiate(order, spawnPoint.position, Quaternion.identity);
     }
 
-    void spawnExclaim()
+    public void spawnExclaim()
     {
         current = "!";
+        hasOrder = true;
         exclaim.GetComponent<Animator>().Play("ExclaimMain");
     }
  
     void OnCollisionEnter(Collision other) {
          if (other.gameObject.layer == LayerMask.NameToLayer("pickup")) {
+            Debug.Log("HELLO");
             if (order == null) {
                 Destroy(other.gameObject);
-                current = "none";
             }
             else {
                 string tag = other.gameObject.tag;
@@ -85,15 +80,13 @@ public class OrderSpawner : MonoBehaviour
                 if (tag == orderName) {
                     Destroy(other.gameObject);
                     Destroy(orderDestroy);
-                    LeanTween.pause(barObj);
-                    LeanTween.scaleX(barObj, .88f, 0);
-                    orderFinished = true;
+
+                    hasOrder = false;
                     current = "none";
-                    gameController.AddScore (1); //get points
+                    gameHandler.GoodOrder(); //get points
                 } else if (tag != orderName) {
                     Destroy(other.gameObject);
-                    current = "none";
-                    LeanTween.scaleX(barObj, 0, (time / 3));
+                    timer -= 1f;
                 }
             }
          }

@@ -9,6 +9,7 @@ public class BoxPickup : MonoBehaviour
     // Start is called before the first frame update
     public ObjectGrab Summon()
     {
+        this.GetComponent<Animator>().Play("ButtonPress");
         GameObject item = (GameObject)Instantiate(Prefab);
         objectGrab = item.transform.GetComponent<ObjectGrab>();
         return objectGrab;

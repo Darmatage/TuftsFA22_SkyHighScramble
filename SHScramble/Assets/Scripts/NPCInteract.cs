@@ -9,7 +9,7 @@ public class NPCInteract : MonoBehaviour
     private bool triggering;
     public PlayerPickupDrop pd;
     public Image button;
-    public OrderSpawner os;
+    private OrderSpawner os;
 
     void Update()
     {
@@ -28,8 +28,10 @@ public class NPCInteract : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("HELLO");
         if (other.tag == "NPC")
         {
+            os = other.GetComponent<OrderSpawner>();
             if ((os.current == "!") || (os.current == "order"))
                 button.GetComponent<EButton>().Near("Talk");
             triggering = true;
@@ -41,6 +43,7 @@ public class NPCInteract : MonoBehaviour
     {
         if (other.tag == "NPC")
         {
+            os = null;
             button.GetComponent<EButton>().Away();
             triggering = false;
             triggeringNPC = null;
