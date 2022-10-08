@@ -7,7 +7,7 @@ public class OrderSpawner : MonoBehaviour
 {
     public GameObject[] orders;
     public Transform spawnPoint;
-    public GameObject order;
+    public GameObject order = null;
     private int rangeEnd;
     private GameObject orderDestroy;
     public GameObject exclaim;
@@ -77,8 +77,9 @@ public class OrderSpawner : MonoBehaviour
         current = "!";
         hasOrder = true;
         exclaim.GetComponent<Animator>().Play("ExclaimMain");
-    }
- 
+    } 
+
+
     void OnCollisionEnter(Collision other) {
         Debug.Log("HELLO?");
          if (other.gameObject.layer == LayerMask.NameToLayer("pickup")) {
@@ -102,7 +103,7 @@ public class OrderSpawner : MonoBehaviour
                 }
             }
          }
-     }  
+     }
      
 }
 
