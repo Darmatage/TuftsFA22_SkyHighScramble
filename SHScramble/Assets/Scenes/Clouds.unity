@@ -1528,7 +1528,7 @@ PrefabInstance:
       objectReference: {fileID: 531727949}
     - target: {fileID: 4921591920193304511, guid: a0848240fd418bc4dad2441ef28b2300, type: 3}
       propertyPath: m_Size.x
-      value: 1.46
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 4921591920193304511, guid: a0848240fd418bc4dad2441ef28b2300, type: 3}
       propertyPath: m_Size.z
@@ -2320,9 +2320,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customer: []
-  maxOrders: 8
+  maxOrders: 2
   happiness: 50
-  numNPC: 40
+  numNPC: 5
   tslider: {fileID: 1403056446}
   happyMeter: {fileID: 303862030}
   healthFill: {fileID: 869360462}

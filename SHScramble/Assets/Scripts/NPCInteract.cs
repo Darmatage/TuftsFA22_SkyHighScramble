@@ -34,6 +34,7 @@ public class NPCInteract : MonoBehaviour
         if (other.tag == "NPC")
         {
             os = other.GetComponent<OrderSpawner>();
+            Debug.Log(os.current);
             if ((os.current == "!") || (os.current == "order"))
             {
                 button.GetComponent<EButton>().Near("Talk");
