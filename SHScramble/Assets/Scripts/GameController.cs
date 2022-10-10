@@ -9,16 +9,20 @@ public class GameController : MonoBehaviour {
        void Start () {
             score = 3;
             UpdateScore();
-             }
+      }
 
        public void AddScore (int newScoreValue) {
              score = score + newScoreValue;
              UpdateScore ();
-             }
+      }
 
        void UpdateScore () {
              Text scoreTextB = textGameObject.GetComponent<Text>();
               scoreTextB.text = "Score: " + score;
-             }
-         }
+      }
+
+      
+
+   
+}
 

@@ -11,6 +11,8 @@ public class ObjectGrab : MonoBehaviour
     private Collider bx;
     public Image item;
     private string curTag;
+    public float timeDestroy = 0;
+    public bool held = false;
 
     [Header("Sprites")]
     public Sprite[] items;
@@ -52,6 +54,17 @@ public class ObjectGrab : MonoBehaviour
         {
             rb.velocity = (Vector3.zero);
             rb.MovePosition(objectGrabPointTransform.position);
+        }
+        if (this.gameObject.tag == "inHand") {
+            held = true;
+            timeDestroy = 0;
+        }
+        if (this.gameObject.tag != "inHand" && held) {
+            Debug.Log("here!");
+            timeDestroy += .01f;
+        }
+        if (timeDestroy > 10) {
+            Destroy(this.gameObject);
         }
     }
 

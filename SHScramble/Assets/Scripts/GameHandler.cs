@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
@@ -64,7 +65,7 @@ public class GameHandler : MonoBehaviour
 
         if (numOrders != 0)
         {
-            happiness -= 0.02f * numOrders;
+            happiness -= 0.01f * numOrders;
         }
 
         spawnTimer += 0.02f;
@@ -84,9 +85,21 @@ public class GameHandler : MonoBehaviour
 
         ColorChanger();
 
-        if ((gameTime >= 100) || (happiness <= 0))
-        {
+        if(gameTime >= 100) {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            gameTime = 0;
+            happiness = 50;
+            SceneManager.LoadScene("GameOverWin");  
+        }
 
+        if (happiness <= 0)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            gameTime = 0;
+            happiness = 50;
+            SceneManager.LoadScene("GameOver");
         }
 
     }
