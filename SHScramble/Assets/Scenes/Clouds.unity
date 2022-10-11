@@ -1884,7 +1884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5283136145832211934, guid: 3b4d6e45a4b11724da39fd2bb28c73c2, type: 3}
       propertyPath: m_Name
-      value: Barf Bag
+      value: BarfBag
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b4d6e45a4b11724da39fd2bb28c73c2, type: 3}
