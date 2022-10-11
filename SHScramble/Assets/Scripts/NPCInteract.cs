@@ -10,6 +10,9 @@ public class NPCInteract : MonoBehaviour
     public PlayerPickupDrop pd;
     public Image button;
     private OrderSpawner os;
+    public bool looking = false;
+    public Transform playerCam;
+    public GameObject other;
 
     private Material highlightRef;
     private Material defaultRef;
@@ -27,12 +30,11 @@ public class NPCInteract : MonoBehaviour
 
             }
         }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "NPC")
-        {
+        Debug.DrawRay(playerCam.position, playerCam.forward, Color.white, 0.0f, true);
+        Debug.Log(looking);
+        if(Physics.Raycast(playerCam.position, playerCam.forward, out RaycastHit raycastHit, 2f) && raycastHit.transform.tag == "NPC")
+        { 
+            other = raycastHit.transform.gameObject;
             os = other.GetComponent<OrderSpawner>();
             Debug.Log(os.current);
             if ((os.current == "!") || (os.current == "order"))
@@ -43,20 +45,46 @@ public class NPCInteract : MonoBehaviour
             }
             triggering = true;
             triggeringNPC = other.gameObject;
-        }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "NPC")
-        {
-            os = null;
+        } else if (other != null) {
             button.GetComponent<EButton>().Away();
             triggering = false;
             triggeringNPC = null;
             defaultRef = other.GetComponent<OrderSpawner>().defaultRef;
             other.transform.GetChild(1).GetComponent<MeshRenderer>().material = defaultRef;
+            os = null;
         }
+                
     }
 
+    // //void OnTriggerStay(Collider other)
+    // {
+    //     if (other.tag == "NPC" && looking)
+    //     {
+    //         os = other.GetComponent<OrderSpawner>();
+    //         Debug.Log(os.current);
+    //         if ((os.current == "!") || (os.current == "order"))
+    //         {
+    //             button.GetComponent<EButton>().Near("Talk");
+    //             highlightRef = other.GetComponent<OrderSpawner>().highlightRef;
+    //             other.transform.GetChild(1).GetComponent<MeshRenderer>().material = highlightRef;
+    //         }
+    //         triggering = true;
+    //         triggeringNPC = other.gameObject;
+    //     }
+    // }
+
+    // //void OnTriggerExit(Collider other)
+    // {
+    //     if (other.tag == "NPC")
+    //     {
+    //         os = null;
+    //         button.GetComponent<EButton>().Away();
+    //         triggering = false;
+    //         triggeringNPC = null;
+    //         defaultRef = other.GetComponent<OrderSpawner>().defaultRef;
+    //         other.transform.GetChild(1).GetComponent<MeshRenderer>().material = defaultRef;
+    //     }
+    // }
+
 }
+

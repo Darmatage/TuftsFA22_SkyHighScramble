@@ -8059,6 +8059,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pd: {fileID: 8078223105027575813}
   button: {fileID: 3584453130221024911}
+  looking: 0
+  playerCam: {fileID: 8078223106013384724}
 --- !u!65 &8078223105027575835
 BoxCollider:
   m_ObjectHideFlags: 0
