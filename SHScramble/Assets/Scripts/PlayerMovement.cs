@@ -21,6 +21,11 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     public bool grounded;
 
+    void Start()
+    {
+        speed = defaultSpeed;
+    }
+
 
     void Update()
     {
@@ -78,6 +83,6 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void StartBobbing(){ Camera.GetComponent<Animator>().Play("HeadBobbing"); }
+    void StartBobbing(){ Camera.GetComponent<Animator>().Play("CamBob2"); }
     void StopBobbing() { Camera.GetComponent<Animator>().Play("New State");}
 }

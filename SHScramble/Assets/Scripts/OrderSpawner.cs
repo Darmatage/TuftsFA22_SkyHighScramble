@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class OrderSpawner : MonoBehaviour
 {
     public GameObject[] orders;
+    public ParticleSystem burst;
     public Transform spawnPoint;
     public GameObject order = null;
     private int rangeEnd;
@@ -92,6 +93,7 @@ public class OrderSpawner : MonoBehaviour
                 if (tag == orderName) {
                     Destroy(other.gameObject);
                     Destroy(orderDestroy);
+                    burst.Play();
 
                     hasOrder = false;
                     current = "none";
