@@ -56,6 +56,7 @@ public class OrderSpawner : MonoBehaviour
                 exclaim.GetComponent<Animator>().Play("ExclaimNull");
 
                 gameHandler.FailedOrder();  
+                gameHandler.numOrders--;
             }
             else
                 timer -= 0.01f;
@@ -81,9 +82,7 @@ public class OrderSpawner : MonoBehaviour
 
 
     void OnCollisionEnter(Collision other) {
-        Debug.Log("HELLO?");
          if (other.gameObject.layer == LayerMask.NameToLayer("pickup")) {
-            Debug.Log("HELLO");
             if (order == null) {
                 Destroy(other.gameObject);
             }
@@ -97,6 +96,7 @@ public class OrderSpawner : MonoBehaviour
                     hasOrder = false;
                     current = "none";
                     gameHandler.GoodOrder(); //get points
+                    gameHandler.numOrders--;
                 } else if (tag != orderName) {
                     Destroy(other.gameObject);
                     timer -= 1f;

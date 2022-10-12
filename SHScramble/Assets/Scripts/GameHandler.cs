@@ -18,7 +18,7 @@ public class GameHandler : MonoBehaviour
     public float happiness = 100f;
     public int numNPC;
 
-    private int numOrders;
+    public int numOrders;
 
     [Header("Object Refs")]
     public Slider tslider;
