@@ -5,21 +5,24 @@ using UnityEngine.UI;
  
 public class OrderSpawner : MonoBehaviour
 {
-    public GameObject[] orders;
+    public Sprite[] orders;
     public ParticleSystem burst;
-    public Transform spawnPoint;
-    public GameObject order = null;
+    public ParticleSystem orderpart;
+    public string order = "null";
     private int rangeEnd;
-    private GameObject orderDestroy;
     public GameObject exclaim;
     public Material[] mats;
     public Material[] hiMats;
     public Material defaultRef;
     public Material highlightRef;
     public string current;
+    public GameObject bg;
    
     public int time;
     public float timer;
+    public GameObject sr;
+    public GameObject item;
+    public Sprite[] face;
  
     public bool hasOrder = false;
 
@@ -37,9 +40,10 @@ public class OrderSpawner : MonoBehaviour
         defaultRef = mats[matNum];
         highlightRef = hiMats[matNum];
         transform.GetChild(1).GetComponent<MeshRenderer>().material = defaultRef;
+        bg.SetActive(false);
 
 
-        timer = 25.0f;
+        timer = 15.0f;
         rangeEnd = orders.Length - 1;
         exclaim.GetComponent<Animator>().Play("ExclaimNull");
         current = "none";
@@ -50,12 +54,32 @@ public class OrderSpawner : MonoBehaviour
     {
         if(hasOrder)
         {
+            //Change Face
+            if(timer <= 4.0f)
+            {
+                sr.GetComponent<SpriteRenderer>().sprite = face[2];
+                sr.GetComponent<Animator>().SetFloat("Speed", 2.5f);
+            }
+            else if(timer <= 8.0f)
+            {
+                sr.GetComponent<SpriteRenderer>().sprite = face[1];
+                sr.GetComponent<Animator>().SetFloat("Speed", 1.5f);
+            }
+            else
+            {
+                sr.GetComponent<SpriteRenderer>().sprite = face[0];
+                sr.GetComponent<Animator>().SetFloat("Speed", 1.0f);
+            }
+
+
             if(timer <= 0) {
-                Destroy(orderDestroy);
+                item.SetActive(false);
                 hasOrder = false;
                 current = "none";
                 exclaim.GetComponent<Animator>().Play("ExclaimNull");
+                orderpart.Stop();
 
+                bg.SetActive(false);
                 gameHandler.FailedOrder();  
                 gameHandler.numOrders--;
             }
@@ -66,16 +90,20 @@ public class OrderSpawner : MonoBehaviour
     }
  
     public void spawnOrder(){
+        orderpart.Stop();
         current = "order";
         exclaim.GetComponent<Animator>().Play("ExclaimNull");
 
         int SOnum = Random.Range(0, orders.Length);
-        order = orders[SOnum];
-        orderDestroy = Instantiate(order, spawnPoint.position, Quaternion.identity);
+        item.GetComponent<SpriteRenderer>().sprite = orders[SOnum];
+        order = item.GetComponent<SpriteRenderer>().sprite.name;
+        bg.SetActive(true);
+        item.SetActive(true);
     }
 
     public void spawnExclaim()
     {
+        orderpart.Play();
         current = "!";
         hasOrder = true;
         exclaim.GetComponent<Animator>().Play("ExclaimMain");
@@ -84,22 +112,22 @@ public class OrderSpawner : MonoBehaviour
 
     void OnCollisionEnter(Collision other) {
          if (other.gameObject.layer == LayerMask.NameToLayer("pickup")) {
-            if (order == null) {
+            if (order == "null") {
                 Destroy(other.gameObject);
             }
             else {
                 string tag = other.gameObject.tag;
-                string orderName = order.gameObject.name;
-                if (tag == orderName) {
+                if (tag == order) {
                     Destroy(other.gameObject);
-                    Destroy(orderDestroy);
+                    item.SetActive(false);
+                    bg.SetActive(false);
                     burst.Play();
 
                     hasOrder = false;
                     current = "none";
                     gameHandler.GoodOrder(); //get points
                     gameHandler.numOrders--;
-                } else if (tag != orderName) {
+                } else if (tag != order) {
                     Destroy(other.gameObject);
                     timer -= 1f;
                 }
