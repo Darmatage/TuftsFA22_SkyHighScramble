@@ -26,7 +26,7 @@ public class OrderSpawner : MonoBehaviour
  
     public bool hasOrder = false;
 
-    public GameHandler gameHandler; 
+    public GameHandler gameHandler;
  
 
 

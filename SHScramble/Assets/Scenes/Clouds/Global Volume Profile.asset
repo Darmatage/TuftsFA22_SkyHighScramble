@@ -33,10 +33,10 @@ MonoBehaviour:
     m_Value: 1.25
   aperture:
     m_OverrideState: 1
-    m_Value: 5.6
+    m_Value: 7
   focalLength:
     m_OverrideState: 1
-    m_Value: 44
+    m_Value: 22
   bladeCount:
     m_OverrideState: 1
     m_Value: 5
@@ -61,10 +61,10 @@ MonoBehaviour:
   active: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 1.18
+    m_Value: 0.62
   intensity:
     m_OverrideState: 1
-    m_Value: 3.42
+    m_Value: 1.09
   scatter:
     m_OverrideState: 1
     m_Value: 0.7
@@ -101,10 +101,10 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.03
   contrast:
     m_OverrideState: 1
-    m_Value: 8
+    m_Value: 10
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}

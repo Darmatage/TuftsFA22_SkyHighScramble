@@ -28,6 +28,7 @@ public class GameHandler : MonoBehaviour
     [Header("NPC Seats")]
     public GameObject[] spots;
     public GameObject defaultNPC;
+    public GameObject parenty;
 
 
     void Start()
@@ -45,6 +46,7 @@ public class GameHandler : MonoBehaviour
             if (spots[spotNum].tag != "hasPlayer")
             {
                 GameObject nick = Instantiate(defaultNPC, spots[spotNum].transform.position, Quaternion.identity);
+                nick.transform.parent = parenty.transform;
                 spots[spotNum].tag = "hasPlayer";
                 customer[fillNum] = (nick.GetComponent<OrderSpawner>());
                 tempNPC--;
