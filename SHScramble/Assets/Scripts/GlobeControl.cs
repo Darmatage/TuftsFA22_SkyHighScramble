@@ -4,21 +4,15 @@ using UnityEngine;
 
 public class GlobeControl : MonoBehaviour
 {
+    //public Transform[] levels;
+    public Vector3[] levelspot;
     public GameObject plane;
-    public GameObject[] levels;
     public int mult = 3;
-    public LevelHandler handle;
-    private int unlockedlev;
-    
-    
+    //public Transform center;
+    public int curlev = -1;
     // Start is called before the first frame update
     void Start()
     {
-        unlockedlev = handle.curlev;
-        for (int i = 0; i < unlockedlev; i++)
-        {
-            levels[i].SetActive(true);
-        }
     }
 
     // Update is called once per frame
@@ -32,5 +26,6 @@ public class GlobeControl : MonoBehaviour
             transform.Rotate(0f, -0.05f * mult, 0f, Space.Self);
         if (Input.GetKey(KeyCode.S))
             transform.Rotate(0f, 0.05f * mult, 0f, Space.Self);
+        
     }
 }
