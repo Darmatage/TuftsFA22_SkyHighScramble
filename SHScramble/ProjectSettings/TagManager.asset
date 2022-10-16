@@ -16,6 +16,8 @@ TagManager:
   - Headphones
   - BarfBag
   - hasPlayer
+  - Lock
+  - Unlock
   layers:
   - Default
   - TransparentFX

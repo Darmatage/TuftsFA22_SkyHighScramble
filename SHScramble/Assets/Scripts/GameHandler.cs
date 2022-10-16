@@ -103,6 +103,8 @@ public class GameHandler : MonoBehaviour
             happiness = 50;
             SceneManager.LoadScene("GameOver");
         }
+        if (happiness >= 100)
+            happiness = 100;
 
     }
     
