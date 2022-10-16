@@ -17,6 +17,8 @@ public class OrderSpawner : MonoBehaviour
     public Material highlightRef;
     public string current;
     public GameObject bg;
+
+    public GameObject [] NPCprefabs;
    
     public int time;
     public float timer;
@@ -27,9 +29,6 @@ public class OrderSpawner : MonoBehaviour
     public bool hasOrder = false;
 
     public GameHandler gameHandler;
- 
-
-
 
 
     // Start is called before the first frame update
@@ -42,6 +41,8 @@ public class OrderSpawner : MonoBehaviour
         transform.GetChild(1).GetComponent<MeshRenderer>().material = defaultRef;
         bg.SetActive(false);
 
+        int Index = Random.Range(0, NPCprefabs.Length);
+        NPCprefabs[Index].SetActive(true);
 
         timer = 15.0f;
         rangeEnd = orders.Length - 1;
