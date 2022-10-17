@@ -9,6 +9,8 @@ public class OrderSpawner : MonoBehaviour
     public ParticleSystem burst;
     public ParticleSystem orderpart;
     public string order = "null";
+    public string order1 = "null";
+    public string order2 = "null";
     private int rangeEnd;
     public GameObject exclaim;
     public Material[] mats;
@@ -18,12 +20,16 @@ public class OrderSpawner : MonoBehaviour
     public string current;
     public GameObject bg;
 
+    public int multiOrder;
+
     public GameObject [] NPCprefabs;
    
     public int time;
     public float timer;
     public GameObject sr;
     public GameObject item;
+    public GameObject multiItem1;
+    public GameObject multiItem2;
     public Sprite[] face;
  
     public bool hasOrder = false;
@@ -40,11 +46,14 @@ public class OrderSpawner : MonoBehaviour
         highlightRef = hiMats[matNum];
         transform.GetChild(1).GetComponent<MeshRenderer>().material = defaultRef;
         bg.SetActive(false);
+        item.SetActive(false);
+        multiItem1.SetActive(false);
+        multiItem2.SetActive(false);
 
         int Index = Random.Range(0, NPCprefabs.Length);
         NPCprefabs[Index].SetActive(true);
 
-        timer = 15.0f;
+        timer = 25.0f;
         rangeEnd = orders.Length - 1;
         exclaim.GetComponent<Animator>().Play("ExclaimNull");
         current = "none";
@@ -91,15 +100,28 @@ public class OrderSpawner : MonoBehaviour
     }
  
     public void spawnOrder(){
+        multiOrder = Random.Range(0, 2);
         orderpart.Stop();
         current = "order";
         exclaim.GetComponent<Animator>().Play("ExclaimNull");
-
-        int SOnum = Random.Range(0, orders.Length);
-        item.GetComponent<SpriteRenderer>().sprite = orders[SOnum];
-        order = item.GetComponent<SpriteRenderer>().sprite.name;
-        bg.SetActive(true);
-        item.SetActive(true);
+        if(multiOrder == 0) {
+            int SOnum = Random.Range(0, orders.Length);
+            item.GetComponent<SpriteRenderer>().sprite = orders[SOnum];
+            order = item.GetComponent<SpriteRenderer>().sprite.name;
+            bg.SetActive(true);
+            item.SetActive(true);
+        } else {
+            int SOnum1 = Random.Range(0, orders.Length);
+            multiItem1.GetComponent<SpriteRenderer>().sprite = orders[SOnum1];
+            order1 = multiItem1.GetComponent<SpriteRenderer>().sprite.name;
+            int SOnum2 = Random.Range(0, orders.Length);
+            multiItem2.GetComponent<SpriteRenderer>().sprite = orders[SOnum2];
+            order2 = multiItem2.GetComponent<SpriteRenderer>().sprite.name;
+            bg.SetActive(true);
+            multiItem1.SetActive(true);
+            multiItem2.SetActive(true);
+        }
+        
     }
 
     public void spawnExclaim()
@@ -113,22 +135,51 @@ public class OrderSpawner : MonoBehaviour
 
     void OnCollisionEnter(Collision other) {
          if (other.gameObject.layer == LayerMask.NameToLayer("pickup")) {
-            if (order == "null") {
+            if (order == "null" && order1 == "null" && order2 == "null") {
                 Destroy(other.gameObject);
             }
             else {
                 string tag = other.gameObject.tag;
-                if (tag == order) {
+                if (tag == order || tag == order1 || tag == order2) {
                     Destroy(other.gameObject);
-                    item.SetActive(false);
-                    bg.SetActive(false);
-                    burst.Play();
+                    if(multiOrder == 0) {
+                        item.SetActive(false);
+                        bg.SetActive(false);
+                        burst.Play();
 
-                    hasOrder = false;
-                    current = "none";
-                    gameHandler.GoodOrder(); //get points
-                    gameHandler.numOrders--;
-                } else if (tag != order) {
+                        hasOrder = false;
+                        current = "none";
+                        gameHandler.GoodOrder(); //get points
+                        gameHandler.numOrders--;
+                    }
+                    else {
+                        if(tag == order1) {
+                            multiItem1.SetActive(false);
+                            order1 = null;
+                            if(order2 == null) {
+                                bg.SetActive(false);
+                                burst.Play();
+
+                                hasOrder = false;
+                                current = "none";
+                                gameHandler.GoodOrder();
+                                gameHandler.numOrders--;
+                            }
+                        } else {
+                            multiItem2.SetActive(false);
+                            order2 = null;
+                            if(order1 == null) {
+                                bg.SetActive(false);
+                                burst.Play();
+
+                                hasOrder = false;
+                                current = "none";
+                                gameHandler.GoodOrder();
+                                gameHandler.numOrders--;
+                            }
+                        }
+                    }
+                } else {
                     Destroy(other.gameObject);
                     timer -= 1f;
                 }

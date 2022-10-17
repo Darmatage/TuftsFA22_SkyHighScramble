@@ -114,7 +114,7 @@ public class GameHandler : MonoBehaviour
 
     public void FailedOrder()
     {
-        happiness -= 20f;
+        happiness -= 10f;
     }
 
     void ColorChanger()
