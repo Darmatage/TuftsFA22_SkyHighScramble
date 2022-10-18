@@ -17,7 +17,7 @@ public class LoadManager : MonoBehaviour
     IEnumerator LoadLevel() {
         //loadScreen.setActive(true);
 
-        AsyncOperation operation = SceneManager.LoadSceneAsync("Clouds");
+        AsyncOperation operation = SceneManager.LoadSceneAsync("WorldMap");
 
         operation.allowSceneActivation = false;
          while (!operation.isDone)

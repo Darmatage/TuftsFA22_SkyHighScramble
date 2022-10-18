@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
     public void Play() {
         SceneManager.LoadScene("Clouds");
     }
+
+    
+
 
     public void QuitGame() {
         #if UNITY_EDITOR
