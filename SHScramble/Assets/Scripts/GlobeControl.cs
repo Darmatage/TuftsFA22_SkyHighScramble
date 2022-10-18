@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GlobeControl : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class GlobeControl : MonoBehaviour
         for (int i = 0; i < unlockedlev; i++)
         {
             levels[i].SetActive(true);
+            levels[i].transform.GetChild(3).GetComponent<TextMeshPro>().text = "1-" + (i + 1);
         }
     }
 

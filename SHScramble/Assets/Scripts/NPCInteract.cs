@@ -30,18 +30,19 @@ public class NPCInteract : MonoBehaviour
 
             }
         }
-        Debug.DrawRay(playerCam.position, playerCam.forward, Color.white, 0.0f, true);
-        Debug.Log(looking);
+        //Debug.DrawRay(playerCam.position, playerCam.forward, Color.white, 0.0f, true);
+        //Debug.Log(looking);
         if(Physics.Raycast(playerCam.position, playerCam.forward, out RaycastHit raycastHit, 2f) && raycastHit.transform.tag == "NPC")
         { 
             other = raycastHit.transform.gameObject;
             os = other.GetComponent<OrderSpawner>();
-            Debug.Log(os.current);
             if ((os.current == "!") || (os.current == "order"))
             {
                 button.GetComponent<EButton>().Near("Talk");
                 highlightRef = other.GetComponent<OrderSpawner>().highlightRef;
-                other.transform.GetChild(1).GetComponent<MeshRenderer>().material = highlightRef;
+                int npcindex = other.GetComponent<OrderSpawner>().npcindex;
+                other.transform.GetChild(0).GetChild(npcindex).GetChild(0).GetComponent<MeshRenderer>().material = highlightRef;
+                other.transform.GetChild(0).GetChild(npcindex).GetChild(1).GetComponent<MeshRenderer>().material = highlightRef;
             }
             triggering = true;
             triggeringNPC = other.gameObject;
@@ -50,11 +51,14 @@ public class NPCInteract : MonoBehaviour
             triggering = false;
             triggeringNPC = null;
             defaultRef = other.GetComponent<OrderSpawner>().defaultRef;
-            other.transform.GetChild(1).GetComponent<MeshRenderer>().material = defaultRef;
+            int npcindex = other.GetComponent<OrderSpawner>().npcindex;
+            other.transform.GetChild(0).GetChild(npcindex).GetChild(0).GetComponent<MeshRenderer>().material = defaultRef;
+            other.transform.GetChild(0).GetChild(npcindex).GetChild(1).GetComponent<MeshRenderer>().material = defaultRef;
             os = null;
         }
                 
-    }
+}
+
 
 }
 

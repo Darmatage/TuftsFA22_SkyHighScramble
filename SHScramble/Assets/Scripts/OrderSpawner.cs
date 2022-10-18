@@ -31,6 +31,7 @@ public class OrderSpawner : MonoBehaviour
     public GameObject multiItem1;
     public GameObject multiItem2;
     public Sprite[] face;
+    public int npcindex;
  
     public bool hasOrder = false;
 
@@ -50,8 +51,10 @@ public class OrderSpawner : MonoBehaviour
         multiItem1.SetActive(false);
         multiItem2.SetActive(false);
 
-        int Index = Random.Range(0, NPCprefabs.Length);
-        NPCprefabs[Index].SetActive(true);
+        npcindex = Random.Range(0, NPCprefabs.Length);
+        NPCprefabs[npcindex].SetActive(true);
+        NPCprefabs[npcindex].transform.GetChild(1).GetComponent<MeshRenderer>().material = defaultRef;
+        NPCprefabs[npcindex].transform.GetChild(0).GetComponent<MeshRenderer>().material = defaultRef;
 
         timer = 25.0f;
         rangeEnd = orders.Length - 1;
