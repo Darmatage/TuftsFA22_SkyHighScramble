@@ -41,6 +41,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("Clouds");
     }
 
+
     public void Resume() {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
@@ -57,6 +58,7 @@ public class PauseMenu : MonoBehaviour
         Cursor.visible = true;
     }
 
+
     public void Win(int happy) {
         Pause();
         int j = 0;
@@ -69,9 +71,22 @@ public class PauseMenu : MonoBehaviour
         else
             j = 0;
         
-        
-        for (int i = 0; i < j; i++)
+        for (int i = 0; i <= j; i++)
+        {
             stars[i].SetActive(true);
+            stars[i].GetComponent<Animator>().Play("Star");
+        }
+        //StartCoroutine(waiter(j));
+    }
+
+    IEnumerator waiter(int j)
+    {
+        for (int i = 0; i <= j; i++)
+        {
+            stars[i].SetActive(true);
+            stars[i].GetComponent<Animator>().Play("Star");
+            yield return new WaitForSeconds(1);
+        }
     }
 
     public void Lose(){

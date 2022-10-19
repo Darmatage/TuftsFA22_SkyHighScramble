@@ -15,6 +15,7 @@ public class GameHandler : MonoBehaviour
     [Header("Game Variables")]
     public int maxOrders = 3;
     private float gameTime = 0;
+    public float totalTime = 100;
     public float happiness = 100f;
     public int numNPC;
 
@@ -62,7 +63,7 @@ public class GameHandler : MonoBehaviour
         lerpSpeed = 3f * Time.deltaTime;
 
         gameTime += 0.02f;
-        tslider.value = (gameTime/100);
+        tslider.value = (gameTime/totalTime);
         happyMeter.value = (happiness/100);
 
         if (numOrders != 0)
@@ -87,7 +88,7 @@ public class GameHandler : MonoBehaviour
 
         ColorChanger();
 
-        if(gameTime >= 100) {
+        if(gameTime >= totalTime) {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             gameTime = 0;
