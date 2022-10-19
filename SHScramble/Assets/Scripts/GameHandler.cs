@@ -92,7 +92,8 @@ public class GameHandler : MonoBehaviour
             Cursor.visible = true;
             gameTime = 0;
             happiness = 50;
-            SceneManager.LoadScene("GameOverWin");  
+            //SceneManager.LoadScene("GameOverWin"); 
+            this.GetComponent<PauseMenu>().Win((int)happiness); 
         }
 
         if (happiness <= 0)
@@ -101,8 +102,10 @@ public class GameHandler : MonoBehaviour
             Cursor.visible = true;
             gameTime = 0;
             happiness = 50;
-            SceneManager.LoadScene("GameOver");
+            //SceneManager.LoadScene("GameOver");
+            this.GetComponent<PauseMenu>().Lose(); 
         }
+        
 
     }
     
