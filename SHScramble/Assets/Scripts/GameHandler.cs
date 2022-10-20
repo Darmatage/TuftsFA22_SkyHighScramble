@@ -22,18 +22,28 @@ public class GameHandler : MonoBehaviour
     public int numOrders;
 
     [Header("Object Refs")]
+    public GameObject sun;
     public Slider tslider;
     public Slider happyMeter;
     public Image healthFill;
     private float lerpSpeed;
+    public Material[] skys;
     [Header("NPC Seats")]
     public GameObject[] spots;
+    public GameObject[] chairs;
     public GameObject defaultNPC;
     public GameObject parenty;
 
 
     void Start()
     {
+        int skymatnum = Random.Range(0, 2);
+        RenderSettings.skybox = skys[skymatnum];
+        
+        if (skymatnum >= 1)
+            sun.GetComponent<Light>().color = new Color(95f/255f, 122f/255f, 165f/255f);
+        else
+            sun.GetComponent<Light>().color = Color.white;
         //cap the number of npcs to seat #s
         if (numNPC > spots.Length)
             numNPC = spots.Length;
@@ -41,6 +51,12 @@ public class GameHandler : MonoBehaviour
         customer = new OrderSpawner[numNPC];
         int tempNPC = numNPC;
         int fillNum = 0;
+        for (int i = 0; i < spots.Length; i++)
+        {
+            int p = Random.Range(0, chairs.Length);
+            GameObject chair = Instantiate(chairs[p], spots[i].transform.position + new Vector3(0.25f, 1.25f, 0f), Quaternion.identity);
+            chair.SetActive(true);
+        }
         while (tempNPC > 0)
         {
             int spotNum = Random.Range(0, spots.Length);
