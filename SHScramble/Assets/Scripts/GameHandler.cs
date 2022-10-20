@@ -38,6 +38,7 @@ public class GameHandler : MonoBehaviour
 
     void Start()
     {
+
         //Change Sky
         int skymatnum = Random.Range(0, 2);
         RenderSettings.skybox = skys[skymatnum];
@@ -68,6 +69,7 @@ public class GameHandler : MonoBehaviour
             if ((spots[spotNum].tag != "hasPlayer") && (spotNum < npcsize))
             {
                 GameObject nick = Instantiate(defaultNPC, spots[spotNum].transform.position, Quaternion.identity);
+                nick.layer = 6;
                 nick.transform.parent = parenty.transform;
                 spots[spotNum].tag = "hasPlayer";
                 customer[fillNum] = (nick.GetComponent<OrderSpawner>());

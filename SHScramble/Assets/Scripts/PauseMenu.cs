@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject[] stars;
 
     public GameObject pauseMenuUI;
+    public GameObject tutorialUI;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,15 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            if(GameIsPaused) {
+                Resume();
+                tutorialUI.SetActive(false);
+            }
+            else {
+                Tutorial("Use [WASD] to walk");
+            }
+        }
     }
 
     public void exit() {
@@ -41,6 +51,15 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("Clouds");
     }
 
+    public void Tutorial(string str)
+    {
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = false;
+        tutorialUI.transform.GetChild(4).GetComponent<Text>().text = str;
+        tutorialUI.SetActive(true);
+    }
 
     public void Resume() {
         pauseMenuUI.SetActive(false);
