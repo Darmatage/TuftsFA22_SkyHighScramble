@@ -248,8 +248,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _1st2nd_Shades_Feather: 0.11
-    - _1st_ShadeColor_Feather: 0.18
-    - _1st_ShadeColor_Step: 0.53
+    - _1st_ShadeColor_Feather: 0.334
+    - _1st_ShadeColor_Step: 0.481
     - _2nd_ShadeColor_Feather: 0.11
     - _2nd_ShadeColor_Step: 0.36
     - _AORemapMax: 1
@@ -280,8 +280,8 @@ Material:
     - _AutoRenderQueue: 1
     - _BaseColorOverridden: 0
     - _BaseColorVisible: 1
-    - _BaseColor_Step: 0.53
-    - _BaseShade_Feather: 0.18
+    - _BaseColor_Step: 0.481
+    - _BaseShade_Feather: 0.334
     - _Base_Speed: 0
     - _Blend: 0
     - _BlendMode: 0
@@ -412,7 +412,7 @@ Material:
     - _Offset_Z: 0
     - _OutlineOverridden: 0
     - _OutlineVisible: 1
-    - _Outline_Width: -1.2
+    - _Outline_Width: 3.72
     - _PPDLodThreshold: 5
     - _PPDMaxSamples: 15
     - _PPDMinSamples: 5
@@ -428,7 +428,7 @@ Material:
     - _RimLightVisible: 1
     - _RimLight_FeatherOff: 0
     - _RimLight_InsideMask: 0.48
-    - _RimLight_Power: 0.73
+    - _RimLight_Power: 0.504
     - _Rotate_EmissiveUV: 0
     - _Rotate_MatCapUV: 0
     - _Rotate_NormalMapForMatCapUV: 0
@@ -517,15 +517,15 @@ Material:
     - _utsVersionY: 8
     - _utsVersionZ: 2
     m_Colors:
-    - _1st_ShadeColor: {r: 1, g: 0.38113207, b: 0.5427768, a: 1}
-    - _2nd_ShadeColor: {r: 0.764151, g: 0.11822708, b: 0.26261032, a: 1}
+    - _1st_ShadeColor: {r: 1, g: 0.40943396, b: 0.5598966, a: 1}
+    - _2nd_ShadeColor: {r: 0.5754717, g: 0.1704699, b: 0.26251587, a: 1}
     - _AngelRingMaskColor: {r: 0, g: 1, b: 0, a: 1}
     - _AngelRing_Color: {r: 1, g: 1, b: 1, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 1, g: 0.67358494, b: 0.7258113, a: 1}
+    - _BaseColor: {r: 1, g: 0.4377358, b: 0.5254649, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColorMaskColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 0.67358494, b: 0.7258113, a: 1}
+    - _Color: {r: 1, g: 0.43773577, b: 0.52546483, a: 1}
     - _ColorShift: {r: 0, g: 0, b: 0, a: 1}
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}

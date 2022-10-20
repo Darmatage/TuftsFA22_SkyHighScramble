@@ -30,13 +30,15 @@ public class GameHandler : MonoBehaviour
     public Material[] skys;
     [Header("NPC Seats")]
     public GameObject[] spots;
-    public GameObject[] chairs;
     public GameObject defaultNPC;
     public GameObject parenty;
+    public bool tutorial;
+    public GameObject wall;
 
 
     void Start()
     {
+        //Change Sky
         int skymatnum = Random.Range(0, 2);
         RenderSettings.skybox = skys[skymatnum];
         
@@ -44,6 +46,15 @@ public class GameHandler : MonoBehaviour
             sun.GetComponent<Light>().color = new Color(95f/255f, 122f/255f, 165f/255f);
         else
             sun.GetComponent<Light>().color = Color.white;
+
+        int npcsize = 24;
+        if(tutorial)
+        {
+            npcsize = 12;
+            wall.SetActive(true);
+        }
+
+
         //cap the number of npcs to seat #s
         if (numNPC > spots.Length)
             numNPC = spots.Length;
@@ -51,16 +62,10 @@ public class GameHandler : MonoBehaviour
         customer = new OrderSpawner[numNPC];
         int tempNPC = numNPC;
         int fillNum = 0;
-        for (int i = 0; i < spots.Length; i++)
-        {
-            int p = Random.Range(0, chairs.Length);
-            GameObject chair = Instantiate(chairs[p], spots[i].transform.position + new Vector3(0.25f, 1.25f, 0f), Quaternion.identity);
-            chair.SetActive(true);
-        }
         while (tempNPC > 0)
         {
             int spotNum = Random.Range(0, spots.Length);
-            if (spots[spotNum].tag != "hasPlayer")
+            if ((spots[spotNum].tag != "hasPlayer") && (spotNum < npcsize))
             {
                 GameObject nick = Instantiate(defaultNPC, spots[spotNum].transform.position, Quaternion.identity);
                 nick.transform.parent = parenty.transform;
@@ -89,7 +94,7 @@ public class GameHandler : MonoBehaviour
 
         spawnTimer += 0.02f;
         if (spawnTimer >= timeToSpawn){
-            if (numOrders <= maxOrders)
+            if (numOrders < maxOrders)
             {
                 int npc = Random.Range(0, numNPC);
                 while (customer[npc].hasOrder)
