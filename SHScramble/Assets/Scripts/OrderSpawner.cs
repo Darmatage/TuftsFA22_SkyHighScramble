@@ -13,12 +13,15 @@ public class OrderSpawner : MonoBehaviour
     public string order2 = "null";
     private int rangeEnd;
     public GameObject exclaim;
+    public GameObject happy;
     public Material[] mats;
     public Material[] hiMats;
     public Material defaultRef;
     public Material highlightRef;
     public string current;
     public GameObject bg;
+    public GameObject exclaimsprite;
+    public Sprite[] exclaimers;
 
     public int multiOrder;
 
@@ -65,6 +68,15 @@ public class OrderSpawner : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (current == "happy")
+        {
+            if(timer <= 0) {
+                happy.SetActive(false);
+                current = "none";
+            }
+            else
+                timer -= 0.01f;
+        }
         if(hasOrder)
         {
             //Change Face
@@ -72,16 +84,19 @@ public class OrderSpawner : MonoBehaviour
             {
                 sr.GetComponent<SpriteRenderer>().sprite = face[2];
                 sr.GetComponent<Animator>().SetFloat("Speed", 2.5f);
+                exclaimsprite.GetComponent<SpriteRenderer>().sprite = exclaimers[2];
             }
             else if(timer <= 8.0f)
             {
                 sr.GetComponent<SpriteRenderer>().sprite = face[1];
                 sr.GetComponent<Animator>().SetFloat("Speed", 1.5f);
+                exclaimsprite.GetComponent<SpriteRenderer>().sprite = exclaimers[1];
             }
             else
             {
                 sr.GetComponent<SpriteRenderer>().sprite = face[0];
                 sr.GetComponent<Animator>().SetFloat("Speed", 1.0f);
+                exclaimsprite.GetComponent<SpriteRenderer>().sprite = exclaimers[0];
             }
 
 
@@ -103,6 +118,7 @@ public class OrderSpawner : MonoBehaviour
     }
  
     public void spawnOrder(){
+        timer = 25.0f;
         multiOrder = Random.Range(0, 2);
         orderpart.Stop();
         current = "order";
@@ -129,11 +145,21 @@ public class OrderSpawner : MonoBehaviour
 
     public void spawnExclaim()
     {
+        timer = 25.0f;
         orderpart.Play();
         current = "!";
         hasOrder = true;
         exclaim.GetComponent<Animator>().Play("ExclaimMain");
     } 
+
+    public void spawnHappy()
+    {
+        timer = 6.0f;
+        current = "happy";
+        hasOrder = false;
+        happy.SetActive(true);
+        //happy.GetComponent<Animator>().Play("ExclaimMain");
+    }
 
 
     void OnCollisionEnter(Collision other) {
@@ -152,6 +178,7 @@ public class OrderSpawner : MonoBehaviour
 
                         hasOrder = false;
                         current = "none";
+                        spawnHappy();
                         gameHandler.GoodOrder(); //get points
                         gameHandler.numOrders--;
                     }
@@ -165,6 +192,7 @@ public class OrderSpawner : MonoBehaviour
 
                                 hasOrder = false;
                                 current = "none";
+                                spawnHappy();
                                 gameHandler.GoodOrder();
                                 gameHandler.numOrders--;
                             }
@@ -177,6 +205,7 @@ public class OrderSpawner : MonoBehaviour
 
                                 hasOrder = false;
                                 current = "none";
+                                spawnHappy();
                                 gameHandler.GoodOrder();
                                 gameHandler.numOrders--;
                             }

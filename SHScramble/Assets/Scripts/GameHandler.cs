@@ -97,7 +97,7 @@ public class GameHandler : MonoBehaviour
             if (numOrders < maxOrders)
             {
                 int npc = Random.Range(0, numNPC);
-                while (customer[npc].hasOrder)
+                while ((customer[npc].hasOrder) || customer[npc].current == "happy") 
                     npc = Random.Range(0, numNPC);
                 customer[npc].spawnExclaim();
                 numOrders++;
