@@ -8,19 +8,22 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/NPC.unity
     guid: fcd158f57e1915d4692bbe9a0acdcc11
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StartPage.unity
     guid: 21a209e2b91154865bd1ea751f616c5e
   - enabled: 1
     path: Assets/Scenes/Clouds.unity
     guid: 00f05281efe349f44b8f6aa7c2cd9335
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameOver.unity
     guid: 25cd5810ad054714cbb43def0d6bd1d9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameOverWin.unity
     guid: 10185145ce3418549ae355f22a73b3be
   - enabled: 1
     path: Assets/Scenes/WorldMap.unity
     guid: 4ef56cbd3e0784f4e8c12ebacf65f821
+  - enabled: 1
+    path: Assets/Scenes/startV2.unity
+    guid: 6ae4c5f82fcf8425a8f916e86258a0ae
   m_configObjects: {}

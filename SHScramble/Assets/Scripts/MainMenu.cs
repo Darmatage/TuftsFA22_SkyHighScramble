@@ -8,10 +8,12 @@ public class MainMenu : MonoBehaviour
 {
 
     public void Play() {
-        SceneManager.LoadScene("Clouds");
+        SceneManager.LoadScene("WorldMap");
     }
 
-    
+    public void PlayAfter() {
+        Invoke("Play", 1);
+    }
 
 
     public void QuitGame() {
@@ -21,4 +23,5 @@ public class MainMenu : MonoBehaviour
             Application.Quit();
         #endif
     }
+
 }
