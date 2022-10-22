@@ -21,9 +21,15 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     public bool grounded;
 
+    [SerializeField] bool isWalking = false;
+    [SerializeField] FootStepGenerator soundGenerator;
+    [SerializeField] float footStepTimer;
+
+
     void Start()
     {
         speed = defaultSpeed;
+        soundGenerator = GetComponent<FootStepGenerator>();
     }
 
 
@@ -62,15 +68,25 @@ public class PlayerMovement : MonoBehaviour
             if(Input.GetKeyUp(KeyCode.A))
                 StopBobbing();
 
-            if(Input.GetButtonUp("Sprint") || (stamina <= 1))
+            if(Input.GetButtonUp("Sprint") || (stamina <= 1)) {
                 speed = defaultSpeed;
+            }
             else if((Input.GetButton("Sprint") == true) && (stamina > 0) && !staminabar.tired)
             {
                 speed = sprintSpeed;
+                footStepTimer = .2f;
             }
         }
 
         controller.Move(move * speed *Time.deltaTime);
+
+        if(move.x < 0 || move.x > 0 || move.y < 0 || move.y > 0 || move.z < 0 || move.z > 0 ){
+            if(!isWalking){
+               PlayFootSound();
+            }
+            footStepTimer = .5f;
+        }
+        
 
         // if(Input.GetButtonDown("Jump") && grounded)
         // {
@@ -85,4 +101,23 @@ public class PlayerMovement : MonoBehaviour
 
     void StartBobbing(){ Camera.GetComponent<Animator>().Play("CamBob2"); }
     void StopBobbing() { Camera.GetComponent<Animator>().Play("New State");}
+
+    void PlayFootSound() {
+        StartCoroutine("PlayStepSound", footStepTimer);
+    }
+
+    IEnumerator PlayStepSound(float timer) {
+        var randomIndex = Random.Range(1, 2);
+        soundGenerator.audioSource.clip = soundGenerator.footStepSound[randomIndex];
+
+        soundGenerator.audioSource.PlayOneShot(soundGenerator.audioSource.clip);
+        soundGenerator.footStepSound[randomIndex] = soundGenerator.footStepSound[0];
+        soundGenerator.footStepSound[0] = soundGenerator.audioSource.clip;
+
+        //soundGenerator.audioSource.Play();
+        isWalking = true;
+
+        yield return new WaitForSeconds(timer);
+        isWalking = false;
+    }
 }
