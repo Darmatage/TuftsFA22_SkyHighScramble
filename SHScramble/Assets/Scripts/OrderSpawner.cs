@@ -117,30 +117,34 @@ public class OrderSpawner : MonoBehaviour
        
     }
  
-    public void spawnOrder(){
+    public void spawnOrder() {
         timer = 25.0f;
-        multiOrder = Random.Range(0, 2);
+        if(LevelHandler.playlev == 1) {
+            multiOrder = 0;
+        } else if(LevelHandler.playlev == 2) {
+            multiOrder = 1;
+        } else {
+            multiOrder = Random.Range(0, 2);
+        }
         orderpart.Stop();
         current = "order";
         exclaim.GetComponent<Animator>().Play("ExclaimNull");
         if(multiOrder == 0) {
-            int SOnum = Random.Range(0, orders.Length);
-            item.GetComponent<SpriteRenderer>().sprite = orders[SOnum];
-            order = item.GetComponent<SpriteRenderer>().sprite.name;
-            bg.SetActive(true);
-            item.SetActive(true);
+            order = setOrder(item);
         } else {
-            int SOnum1 = Random.Range(0, orders.Length);
-            multiItem1.GetComponent<SpriteRenderer>().sprite = orders[SOnum1];
-            order1 = multiItem1.GetComponent<SpriteRenderer>().sprite.name;
-            int SOnum2 = Random.Range(0, orders.Length);
-            multiItem2.GetComponent<SpriteRenderer>().sprite = orders[SOnum2];
-            order2 = multiItem2.GetComponent<SpriteRenderer>().sprite.name;
-            bg.SetActive(true);
-            multiItem1.SetActive(true);
-            multiItem2.SetActive(true);
+            order1 = setOrder(multiItem1);
+            order2 = setOrder(multiItem2);
         }
+        bg.SetActive(true);
         
+    }
+
+    public string setOrder(GameObject curitem) {
+        int SOnum = Random.Range(0, orders.Length);
+        curitem.GetComponent<SpriteRenderer>().sprite = orders[SOnum];
+        string curorder = curitem.GetComponent<SpriteRenderer>().sprite.name;
+        curitem.SetActive(true);
+        return curorder;
     }
 
     public void spawnExclaim()
@@ -173,41 +177,20 @@ public class OrderSpawner : MonoBehaviour
                     Destroy(other.gameObject);
                     if(multiOrder == 0) {
                         item.SetActive(false);
-                        bg.SetActive(false);
-                        burst.Play();
-
-                        hasOrder = false;
-                        current = "none";
-                        spawnHappy();
-                        gameHandler.GoodOrder(); //get points
-                        gameHandler.numOrders--;
+                        finishOrder();
                     }
                     else {
                         if(tag == order1) {
                             multiItem1.SetActive(false);
                             order1 = null;
                             if(order2 == null) {
-                                bg.SetActive(false);
-                                burst.Play();
-
-                                hasOrder = false;
-                                current = "none";
-                                spawnHappy();
-                                gameHandler.GoodOrder();
-                                gameHandler.numOrders--;
+                                finishOrder();
                             }
                         } else {
                             multiItem2.SetActive(false);
                             order2 = null;
                             if(order1 == null) {
-                                bg.SetActive(false);
-                                burst.Play();
-
-                                hasOrder = false;
-                                current = "none";
-                                spawnHappy();
-                                gameHandler.GoodOrder();
-                                gameHandler.numOrders--;
+                                finishOrder();
                             }
                         }
                     }
@@ -218,6 +201,17 @@ public class OrderSpawner : MonoBehaviour
             }
          }
      }
+
+    public void finishOrder() {
+        bg.SetActive(false);
+        burst.Play();
+
+        hasOrder = false;
+        current = "none";
+        spawnHappy();
+        gameHandler.GoodOrder(); //get points
+        gameHandler.numOrders--;
+    }
      
 }
 

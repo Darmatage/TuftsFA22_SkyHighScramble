@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelHandler : MonoBehaviour
 {
     public int curlev;
+    public static int playlev;
     // Start is called before the first frame update
     void Start()
     {

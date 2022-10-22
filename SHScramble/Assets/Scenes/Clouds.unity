@@ -1137,7 +1137,7 @@ GameObject:
   - component: {fileID: 163061550}
   - component: {fileID: 163061552}
   - component: {fileID: 163061551}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1497,9 +1497,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 275071478}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: ChipsButton
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1798,7 +1798,7 @@ GameObject:
   - component: {fileID: 331151539}
   - component: {fileID: 331151538}
   - component: {fileID: 331151537}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: ButtonPush
   m_TagString: Box
   m_Icon: {fileID: 0}
@@ -2002,7 +2002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 344433988}
   - component: {fileID: 344433989}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Soda (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2085,9 +2085,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 345573565}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: NapkinButton
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7073,7 +7073,7 @@ GameObject:
   - component: {fileID: 385177475}
   - component: {fileID: 385177477}
   - component: {fileID: 385177476}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7177,7 +7177,7 @@ GameObject:
   - component: {fileID: 429950288}
   - component: {fileID: 429950287}
   - component: {fileID: 429950286}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: ButtonPush
   m_TagString: Box
   m_Icon: {fileID: 0}
@@ -7476,7 +7476,7 @@ GameObject:
   - component: {fileID: 475530787}
   - component: {fileID: 475530789}
   - component: {fileID: 475530788}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8357,7 +8357,7 @@ GameObject:
   - component: {fileID: 659849680}
   - component: {fileID: 659849679}
   - component: {fileID: 659849678}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: ButtonPush
   m_TagString: Box
   m_Icon: {fileID: 0}
@@ -8484,9 +8484,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 677013984}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: WineButton
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8566,6 +8566,10 @@ PrefabInstance:
     - target: {fileID: 5283136145832211934, guid: 3b4d6e45a4b11724da39fd2bb28c73c2, type: 3}
       propertyPath: m_Name
       value: BarfBag
+      objectReference: {fileID: 0}
+    - target: {fileID: 5283136145832211934, guid: 3b4d6e45a4b11724da39fd2bb28c73c2, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b4d6e45a4b11724da39fd2bb28c73c2, type: 3}
@@ -9107,7 +9111,7 @@ GameObject:
   - component: {fileID: 894238947}
   - component: {fileID: 894238946}
   - component: {fileID: 894238945}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: ButtonPush
   m_TagString: Box
   m_Icon: {fileID: 0}
@@ -9721,7 +9725,7 @@ GameObject:
   - component: {fileID: 975256557}
   - component: {fileID: 975256556}
   - component: {fileID: 975256555}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: ButtonPush
   m_TagString: Box
   m_Icon: {fileID: 0}
@@ -9849,7 +9853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 979122076}
   - component: {fileID: 979122077}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Soda (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10197,9 +10201,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1042014865}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: BarfButton
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10420,7 +10424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1152317324}
   - component: {fileID: 1152317325}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Soda (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15713,7 +15717,7 @@ GameObject:
   - component: {fileID: 1281714094}
   - component: {fileID: 1281714096}
   - component: {fileID: 1281714095}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15961,7 +15965,7 @@ GameObject:
   - component: {fileID: 1326030459}
   - component: {fileID: 1326030461}
   - component: {fileID: 1326030460}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16047,7 +16051,7 @@ GameObject:
   - component: {fileID: 1327290905}
   - component: {fileID: 1327290904}
   - component: {fileID: 1327290903}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: ButtonPush
   m_TagString: Box
   m_Icon: {fileID: 0}
@@ -21257,7 +21261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1393405051}
   - component: {fileID: 1393405052}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Soda (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21925,7 +21929,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1613499200}
   - component: {fileID: 1613499201}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Soda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22455,9 +22459,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1731694475}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: SodaButton
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22495,9 +22499,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1750499286}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: HeadphonesButton
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22805,7 +22809,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1818598932}
   - component: {fileID: 1818598933}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Soda (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23183,7 +23187,7 @@ GameObject:
   - component: {fileID: 1932067799}
   - component: {fileID: 1932067801}
   - component: {fileID: 1932067800}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23941,7 +23945,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2047456198}
   - component: {fileID: 2047456199}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Soda (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25846,7 +25850,7 @@ GameObject:
   - component: {fileID: 8314521191581537615}
   - component: {fileID: 7388321436932847458}
   - component: {fileID: 2337641470698893043}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26088,7 +26092,7 @@ GameObject:
   - component: {fileID: 8661409164468482157}
   - component: {fileID: 8661409164468482158}
   - component: {fileID: 8661409164468482159}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: ButtonPush
   m_TagString: Box
   m_Icon: {fileID: 0}
@@ -26144,9 +26148,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5494997568390294281}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: WaterButton
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -178,6 +178,7 @@ MonoBehaviour:
   ticket: {fileID: 1659590761}
   lev: {fileID: 1753038140}
   stars: 0
+  level: 0
 --- !u!65 &87477308
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1418,6 +1419,7 @@ MonoBehaviour:
   ticket: {fileID: 1659590761}
   lev: {fileID: 1753038140}
   stars: 0
+  level: 0
 --- !u!65 &610423229
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2905,6 +2907,7 @@ MonoBehaviour:
   ticket: {fileID: 1659590761}
   lev: {fileID: 1753038140}
   stars: 0
+  level: 0
 --- !u!65 &1028042202
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3780,6 +3783,7 @@ MonoBehaviour:
   ticket: {fileID: 1659590761}
   lev: {fileID: 1753038140}
   stars: 2
+  level: 1
 --- !u!65 &1343624117
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5504,6 +5508,7 @@ MonoBehaviour:
   ticket: {fileID: 1659590761}
   lev: {fileID: 1753038140}
   stars: 0
+  level: 0
 --- !u!65 &2074173838
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6404,6 +6409,7 @@ MonoBehaviour:
   ticket: {fileID: 0}
   lev: {fileID: 0}
   stars: 0
+  level: 0
 --- !u!54 &4133361588747957478
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6788,6 +6794,7 @@ MonoBehaviour:
   ticket: {fileID: 1659590761}
   lev: {fileID: 1753038140}
   stars: 1
+  level: 2
 --- !u!1 &5569752210772494755
 GameObject:
   m_ObjectHideFlags: 0

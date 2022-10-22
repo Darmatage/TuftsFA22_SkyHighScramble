@@ -14,6 +14,8 @@ public class TriggerLevel : MonoBehaviour
     private Animator taganim;
     private Animator levanim;
 
+    public int level;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,7 @@ public class TriggerLevel : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            LevelHandler.playlev = level;
             ticket.SetActive(true);
             lev.SetActive(true);
             this.transform.GetChild(1).GetComponent<MeshRenderer>().material = mats[1];
