@@ -40,6 +40,8 @@ public class OrderSpawner : MonoBehaviour
 
     public GameHandler gameHandler;
 
+    [SerializeField] audioforNPC soundGenerator;
+
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +84,9 @@ public class OrderSpawner : MonoBehaviour
             //Change Face
             if(timer <= 4.0f)
             {
+                soundGenerator.audioSource.clip = soundGenerator.NPCsound[1];
+                soundGenerator.audioSource.Play();
+
                 sr.GetComponent<SpriteRenderer>().sprite = face[2];
                 sr.GetComponent<Animator>().SetFloat("Speed", 2.5f);
                 exclaimsprite.GetComponent<SpriteRenderer>().sprite = exclaimers[2];
@@ -129,6 +134,10 @@ public class OrderSpawner : MonoBehaviour
         orderpart.Stop();
         current = "order";
         exclaim.GetComponent<Animator>().Play("ExclaimNull");
+
+        soundGenerator.audioSource.clip = soundGenerator.NPCsound[2];
+        soundGenerator.audioSource.Play();
+
         if(multiOrder == 0) {
             order = setOrder(item);
         } else {
@@ -162,6 +171,8 @@ public class OrderSpawner : MonoBehaviour
         current = "happy";
         hasOrder = false;
         happy.SetActive(true);
+        soundGenerator.audioSource.clip = soundGenerator.NPCsound[0];
+        soundGenerator.audioSource.Play();
         //happy.GetComponent<Animator>().Play("ExclaimMain");
     }
 

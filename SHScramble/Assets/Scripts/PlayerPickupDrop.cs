@@ -18,6 +18,8 @@ public class PlayerPickupDrop : MonoBehaviour
     public Image button;
     private string curTag;
 
+    [SerializeField] audioItemPickDrop soundGenerator;
+
     // Update is called once per frame
     void Update()
     {
@@ -32,6 +34,8 @@ public class PlayerPickupDrop : MonoBehaviour
                         objectGrab = bp.Summon();
                         grabbing = true;
                         curTag = objectGrab.Grab(objectGrabPointTransform);
+                        soundGenerator.audioSource.clip = soundGenerator.itemSound[0];
+                        soundGenerator.audioSource.Play();
                     }
                 }
 
@@ -40,11 +44,15 @@ public class PlayerPickupDrop : MonoBehaviour
                     {
                         grabbing = true;
                         curTag = objectGrab.Grab(objectGrabPointTransform);
+                        soundGenerator.audioSource.clip = soundGenerator.itemSound[0];
+                        soundGenerator.audioSource.Play();
                     }
             }
             else
             {
                 objectGrab.Drop(curTag);
+                soundGenerator.audioSource.clip = soundGenerator.itemSound[1];
+                soundGenerator.audioSource.Play();
                 objectGrab = null;
                 grabbing = false;
             }
