@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class GameHandler : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class GameHandler : MonoBehaviour
     public int ordersNeeded;
     private int doneOrders = 0;
     public int numButtons;
+    public GameObject canva;
+    public VideoPlayer videop;
 
     public int numOrders;
 
@@ -48,6 +51,7 @@ public class GameHandler : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(ReadySet());
         //Number Buttons
         for (int r = 0; r < numButtons; r++)
         {
@@ -198,5 +202,13 @@ public class GameHandler : MonoBehaviour
     {
         Color barColor = Color.Lerp(Color.red, Color.green, (happiness/100f));
         healthFill.color = barColor;
+    }
+
+    IEnumerator ReadySet()
+    {
+        //yield return new WaitForSeconds(1.0f);
+        videop.Play();
+        yield return new WaitForSeconds(3f);
+        canva.SetActive(false);
     }
 }

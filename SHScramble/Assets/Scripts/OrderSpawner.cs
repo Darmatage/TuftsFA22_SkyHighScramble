@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
  
 public class OrderSpawner : MonoBehaviour
 {
@@ -46,6 +47,10 @@ public class OrderSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //play animations
+        
+
+
         //choose random Material
         int matNum = Random.Range(0, mats.Length);
         defaultRef = mats[matNum];
@@ -223,6 +228,5 @@ public class OrderSpawner : MonoBehaviour
         gameHandler.GoodOrder(); //get points
         gameHandler.numOrders--;
     }
-     
 }
 
