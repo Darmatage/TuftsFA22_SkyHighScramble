@@ -48,7 +48,7 @@ public class StaminaBar : MonoBehaviour
             fill.color = Color.Lerp(pink, Color.red, lerpy);
         }
         else
-            fill.color = Color.green;
+            fill.color = Color.yellow;
 
 
 

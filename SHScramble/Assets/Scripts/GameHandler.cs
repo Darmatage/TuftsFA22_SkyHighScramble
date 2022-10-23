@@ -18,11 +18,21 @@ public class GameHandler : MonoBehaviour
     public float totalTime = 100;
     public float happiness = 100f;
     public int numNPC;
+    public int ordersNeeded;
+    private int doneOrders = 0;
+    public int numButtons;
 
     public int numOrders;
 
     [Header("Object Refs")]
+    public Sprite[] mark;
+    public GameObject[] buttons;
+    public GameObject[] stars;
     public GameObject sun;
+    public Image exclaimmark;
+    public Text ordertext;
+    public Text happytext;
+    public Text[] startext;
     public Slider tslider;
     public Slider happyMeter;
     public Image healthFill;
@@ -38,7 +48,16 @@ public class GameHandler : MonoBehaviour
 
     void Start()
     {
+        //Number Buttons
+        for (int r = 0; r < numButtons; r++)
+        {
+            buttons[r].SetActive(true);
+        }
 
+
+        startext[2].text = "" + ordersNeeded;
+        startext[1].text = "" + (ordersNeeded/2);
+        startext[0].text = "" + (ordersNeeded/4);
         //Change Sky
         int skymatnum = Random.Range(0, 2);
         RenderSettings.skybox = skys[skymatnum];
@@ -86,13 +105,44 @@ public class GameHandler : MonoBehaviour
         lerpSpeed = 3f * Time.deltaTime;
 
         gameTime += 0.02f;
-        tslider.value = (gameTime/totalTime);
+        tslider.value = ((gameTime/totalTime)/2 + 0.5f);
         happyMeter.value = (happiness/100);
 
-        if (numOrders != 0)
+        int j;
+        if (doneOrders >= ordersNeeded) {j = 3;}
+        else if (doneOrders >= ordersNeeded/2) {j = 2;}
+        else if (doneOrders >= ordersNeeded/4) {j = 1;}
+        else {j = 0;}
+
+        for (int i = 0; i < j; i++)
         {
-            happiness -= 0.01f * numOrders;
+            stars[i].SetActive(true);
+            startext[i].text = "";
+            //stars[i].GetComponent<Animator>().Play("Star");
         }
+
+        ordertext.text = "0" + numOrders;
+        happytext.text = "0" + doneOrders;
+        if (numOrders >= 3)
+        {
+            exclaimmark.sprite = mark[2];
+            exclaimmark.GetComponent<Animator>().SetFloat("speed", 2f);
+            exclaimmark.GetComponent<Animator>().Play("Exclaim3");
+        }
+        else if (numOrders >= 2)
+        {
+            exclaimmark.sprite = mark[1];
+            exclaimmark.GetComponent<Animator>().SetFloat("speed", 1.5f);
+            exclaimmark.GetComponent<Animator>().Play("Exclaim3");
+        }
+        else if (numOrders >= 1)
+        {
+            exclaimmark.sprite = mark[0];
+            exclaimmark.GetComponent<Animator>().SetFloat("speed", 1f);
+            exclaimmark.GetComponent<Animator>().Play("Exclaim3");
+        }
+        else
+            exclaimmark.GetComponent<Animator>().Play("Nothing");
 
         spawnTimer += 0.02f;
         if (spawnTimer >= timeToSpawn){
@@ -115,20 +165,19 @@ public class GameHandler : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             gameTime = 0;
-            happiness = 50;
-            //SceneManager.LoadScene("GameOverWin"); 
-            this.GetComponent<PauseMenu>().Win((int)happiness); 
+
+            this.GetComponent<PauseMenu>().Win(doneOrders, ordersNeeded); 
         }
 
-        if (happiness <= 0)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            gameTime = 0;
-            happiness = 50;
-            //SceneManager.LoadScene("GameOver");
-            this.GetComponent<PauseMenu>().Lose(); 
-        }
+        // if (happiness <= 0)
+        // {
+        //     Cursor.lockState = CursorLockMode.None;
+        //     Cursor.visible = true;
+        //     gameTime = 0;
+        //     happiness = 50;
+        //     //SceneManager.LoadScene("GameOver");
+        //     this.GetComponent<PauseMenu>().Lose(); 
+        // }
         
 
     }
@@ -137,6 +186,7 @@ public class GameHandler : MonoBehaviour
     {
         happyMeter.value = Mathf.Lerp(happyMeter.value, happyMeter.value + 0.2f, lerpSpeed);
         happiness += 20f;
+        doneOrders++;
     }
 
     public void FailedOrder()

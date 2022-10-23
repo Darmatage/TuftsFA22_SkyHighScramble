@@ -78,19 +78,19 @@ public class PauseMenu : MonoBehaviour
     }
 
 
-    public void Win(int happy) {
+    public void Win(int happy, int goal) {
         Pause();
         int j = 0;
-        if (happy >= 75)
+        if (happy >= goal)
             j = 3;
-        else if (happy >= 50)
+        else if (happy >= goal/2)
             j = 2;
-        else if (happy >= 25)
+        else if (happy >= goal/4)
             j = 1;
         else
             j = 0;
         
-        for (int i = 0; i <= j; i++)
+        for (int i = 0; i < j; i++)
         {
             stars[i].SetActive(true);
             stars[i].GetComponent<Animator>().Play("Star");

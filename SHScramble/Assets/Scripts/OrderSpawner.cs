@@ -149,7 +149,7 @@ public class OrderSpawner : MonoBehaviour
     }
 
     public string setOrder(GameObject curitem) {
-        int SOnum = Random.Range(0, orders.Length);
+        int SOnum = Random.Range(0, gameHandler.numButtons);
         curitem.GetComponent<SpriteRenderer>().sprite = orders[SOnum];
         string curorder = curitem.GetComponent<SpriteRenderer>().sprite.name;
         curitem.SetActive(true);
