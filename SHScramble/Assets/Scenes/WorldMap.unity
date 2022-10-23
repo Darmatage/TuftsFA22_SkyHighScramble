@@ -3783,7 +3783,7 @@ MonoBehaviour:
   ticket: {fileID: 1659590761}
   lev: {fileID: 1753038140}
   stars: 2
-  level: 1
+  level: 0
 --- !u!65 &1343624117
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6794,7 +6794,7 @@ MonoBehaviour:
   ticket: {fileID: 1659590761}
   lev: {fileID: 1753038140}
   stars: 1
-  level: 2
+  level: 1
 --- !u!1 &5569752210772494755
 GameObject:
   m_ObjectHideFlags: 0

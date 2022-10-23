@@ -14,18 +14,18 @@ public class GameHandler : MonoBehaviour
     private float timeToSpawn = 10.0f;
     private float spawnTimer = 0f;
     [Header("Game Variables")]
-    public int maxOrders = 3;
+    public int[] maxOrders;
     private float gameTime = 0;
-    public float totalTime = 100;
-    public float happiness = 100f;
-    public int numNPC;
-    public int ordersNeeded;
+    public float[] totalTime;
+    public int[] numNPC;
+    public int[] ordersNeeded;
     private int doneOrders = 0;
-    public int numButtons;
+    public int[] numButtons;
     public GameObject canva;
     public VideoPlayer videop;
 
     public int numOrders;
+    public float happiness = 100f;
 
     [Header("Object Refs")]
     public Sprite[] mark;
@@ -53,15 +53,15 @@ public class GameHandler : MonoBehaviour
     {
         StartCoroutine(ReadySet());
         //Number Buttons
-        for (int r = 0; r < numButtons; r++)
+        for (int r = 0; r < numButtons[LevelHandler.playlev]; r++)
         {
             buttons[r].SetActive(true);
         }
 
 
-        startext[2].text = "" + ordersNeeded;
-        startext[1].text = "" + (ordersNeeded/2);
-        startext[0].text = "" + (ordersNeeded/4);
+        startext[2].text = "" + ordersNeeded[LevelHandler.playlev];
+        startext[1].text = "" + (ordersNeeded[LevelHandler.playlev]/2);
+        startext[0].text = "" + (ordersNeeded[LevelHandler.playlev]/4);
         //Change Sky
         int skymatnum = Random.Range(0, 2);
         RenderSettings.skybox = skys[skymatnum];
@@ -80,11 +80,11 @@ public class GameHandler : MonoBehaviour
 
 
         //cap the number of npcs to seat #s
-        if (numNPC > spots.Length)
-            numNPC = spots.Length;
+        if (numNPC[LevelHandler.playlev] > spots.Length)
+            numNPC[LevelHandler.playlev] = spots.Length;
 
-        customer = new OrderSpawner[numNPC];
-        int tempNPC = numNPC;
+        customer = new OrderSpawner[numNPC[LevelHandler.playlev]];
+        int tempNPC = numNPC[LevelHandler.playlev];
         int fillNum = 0;
         while (tempNPC > 0)
         {
@@ -100,7 +100,7 @@ public class GameHandler : MonoBehaviour
                 fillNum++;
             }
         }
-        numNPC = customer.Length;
+        numNPC[LevelHandler.playlev] = customer.Length;
     }
 
     // Update is called once per frame
@@ -109,13 +109,13 @@ public class GameHandler : MonoBehaviour
         lerpSpeed = 3f * Time.deltaTime;
 
         gameTime += 0.02f;
-        tslider.value = ((gameTime/totalTime)/2 + 0.5f);
+        tslider.value = ((gameTime/totalTime[LevelHandler.playlev])/2 + 0.5f);
         happyMeter.value = (happiness/100);
 
         int j;
-        if (doneOrders >= ordersNeeded) {j = 3;}
-        else if (doneOrders >= ordersNeeded/2) {j = 2;}
-        else if (doneOrders >= ordersNeeded/4) {j = 1;}
+        if (doneOrders >= ordersNeeded[LevelHandler.playlev]) {j = 3;}
+        else if (doneOrders >= ordersNeeded[LevelHandler.playlev]/2) {j = 2;}
+        else if (doneOrders >= ordersNeeded[LevelHandler.playlev]/4) {j = 1;}
         else {j = 0;}
 
         for (int i = 0; i < j; i++)
@@ -150,11 +150,11 @@ public class GameHandler : MonoBehaviour
 
         spawnTimer += 0.02f;
         if (spawnTimer >= timeToSpawn){
-            if (numOrders < maxOrders)
+            if (numOrders < maxOrders[LevelHandler.playlev])
             {
-                int npc = Random.Range(0, numNPC);
+                int npc = Random.Range(0, numNPC[LevelHandler.playlev]);
                 while ((customer[npc].hasOrder) || customer[npc].current == "happy") 
-                    npc = Random.Range(0, numNPC);
+                    npc = Random.Range(0, numNPC[LevelHandler.playlev]);
                 customer[npc].spawnExclaim();
                 numOrders++;
             }
@@ -165,12 +165,12 @@ public class GameHandler : MonoBehaviour
 
         ColorChanger();
 
-        if(gameTime >= totalTime) {
+        if(gameTime >= totalTime[LevelHandler.playlev]) {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             gameTime = 0;
 
-            this.GetComponent<PauseMenu>().Win(doneOrders, ordersNeeded); 
+            this.GetComponent<PauseMenu>().Win(doneOrders, ordersNeeded[LevelHandler.playlev]); 
         }
 
         // if (happiness <= 0)

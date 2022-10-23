@@ -129,9 +129,9 @@ public class OrderSpawner : MonoBehaviour
  
     public void spawnOrder() {
         timer = 25.0f;
-        if(LevelHandler.playlev == 1) {
+        if(LevelHandler.playlev == 0) {
             multiOrder = 0;
-        } else if(LevelHandler.playlev == 2) {
+        } else if(LevelHandler.playlev >= 2) {
             multiOrder = 1;
         } else {
             multiOrder = Random.Range(0, 2);
@@ -154,7 +154,7 @@ public class OrderSpawner : MonoBehaviour
     }
 
     public string setOrder(GameObject curitem) {
-        int SOnum = Random.Range(0, gameHandler.numButtons);
+        int SOnum = Random.Range(0, gameHandler.numButtons[LevelHandler.playlev]);
         curitem.GetComponent<SpriteRenderer>().sprite = orders[SOnum];
         string curorder = curitem.GetComponent<SpriteRenderer>().sprite.name;
         curitem.SetActive(true);

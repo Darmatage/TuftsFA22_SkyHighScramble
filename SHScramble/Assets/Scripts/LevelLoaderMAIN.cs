@@ -17,13 +17,9 @@ public class LevelLoaderMAIN : MonoBehaviour
         IntoNextLevel();
     }
     
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            LoadNextLevel();
-        }
-    }
+    // void Update()
+    // {
+    // }
 
     public void LoadNextLevel()
     {
