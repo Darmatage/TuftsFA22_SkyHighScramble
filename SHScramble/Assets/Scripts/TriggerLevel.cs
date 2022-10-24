@@ -26,6 +26,11 @@ public class TriggerLevel : MonoBehaviour
         levanim = lev.GetComponent<Animator>();
     }
 
+    void Update()
+    {
+        stars = LevelHandler.curstars[level];
+    }
+
     // Update is called once per frame
     private void OnTriggerEnter(Collider other)
     {

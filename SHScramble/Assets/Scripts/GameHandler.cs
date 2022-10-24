@@ -19,7 +19,7 @@ public class GameHandler : MonoBehaviour
     public float[] totalTime;
     public int[] numNPC;
     public int[] ordersNeeded;
-    private int doneOrders = 0;
+    public int doneOrders = 0;
     public int[] numButtons;
     public GameObject canva;
     public VideoPlayer videop;

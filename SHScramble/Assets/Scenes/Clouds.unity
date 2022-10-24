@@ -10287,6 +10287,7 @@ MonoBehaviour:
   - 75
   numNPC: 0300000005000000
   ordersNeeded: 0400000006000000
+  doneOrders: 0
   numButtons: 0300000006000000
   canva: {fileID: 884060008}
   videop: {fileID: 88677522}
@@ -10385,6 +10386,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 2034551817}
   Darken: {fileID: 333830087}
   tutorialUI: {fileID: 329251433}
+  gameHandler: {fileID: 916918526}
 --- !u!1 &928738057
 GameObject:
   m_ObjectHideFlags: 0

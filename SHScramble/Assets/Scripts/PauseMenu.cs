@@ -13,6 +13,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject Darken;
     public GameObject tutorialUI;
 
+    public GameHandler gameHandler;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,6 +80,23 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        int j = 0;
+        int happy = gameHandler.doneOrders;
+        int goal = gameHandler.ordersNeeded[LevelHandler.playlev];
+        if (happy >= goal)
+            j = 3;
+        else if (happy >= goal/2)
+            j = 2;
+        else if (happy >= goal/4)
+            j = 1;
+        else
+            j = 0;
+        
+        for (int i = 0; i < j; i++)
+        {
+            stars[i].SetActive(true);
+            stars[i].GetComponent<Animator>().Play("Star");
+        }
     }
 
 
@@ -92,11 +111,8 @@ public class PauseMenu : MonoBehaviour
             j = 1;
         else
             j = 0;
-        
-        for (int i = 0; i < j; i++)
-        {
-            stars[i].SetActive(true);
-            stars[i].GetComponent<Animator>().Play("Star");
+        if(LevelHandler.curstars[LevelHandler.playlev] < j) {
+            LevelHandler.curstars[LevelHandler.playlev] = j;
         }
         //StartCoroutine(waiter(j));
     }
