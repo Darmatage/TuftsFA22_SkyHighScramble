@@ -15,10 +15,18 @@ public class PauseMenu : MonoBehaviour
 
     public GameHandler gameHandler;
 
+    public float waitTime = 5f;
+    public float tutorialIndex = 0;
+    public bool taskFinished = false;
+
     // Start is called before the first frame update
     void Start()
     {
         Resume();
+        // if(LevelHandler.playlev == 0) {
+        //     playTutorial();
+        // }
+        
     }
 
     // Update is called once per frame
@@ -40,7 +48,64 @@ public class PauseMenu : MonoBehaviour
                 Tutorial("Use [WASD] to walk");
             }
         }
+        if(LevelHandler.playlev == 0) {
+            if(tutorialIndex == 0) {
+                Tutorial("Welcome to Sky High Scramble!");
+                tutorialIndex++;
+            } else if(tutorialIndex == 1) {
+                if(waitTime > 0) {
+                    waitTime -= Time.deltaTime;
+                } else {
+                    Tutorial("Use [WASD] to walk");
+                    tutorialIndex++;
+                    waitTime = 4f;
+                }
+            } else if(tutorialIndex == 2) {
+                if(Input.GetKeyDown("a") || Input.GetKeyDown("w") || Input.GetKeyDown("s") || Input.GetKeyDown("d")) {
+                    taskFinished = true;
+                }
+                if(taskFinished) {
+                    if(waitTime > 0) {
+                        waitTime -= Time.deltaTime;
+                    } else {
+                        Tutorial("The front of the plane has item buttons. Press E to get an item and E to drop items!");
+                        tutorialIndex++;
+                        taskFinished = false;
+                        waitTime = 4f;
+                    }
+                }      
+            } else if(tutorialIndex == 3) {
+                if(PlayerPickupDrop.grabbing) {
+                    taskFinished = true;
+                }
+                if(taskFinished) {
+                    if(waitTime > 0) {
+                        waitTime -= Time.deltaTime;
+                    } else {
+                        Tutorial("Talk to an customer that has an eclamation point by pressing E. Bring the customer the order it asks for to get a point!");
+                        tutorialIndex++;
+                        taskFinished = false;
+                        waitTime = 4f;
+                    }
+                }
+            } else if(tutorialIndex == 4) {
+                if(gameHandler.doneOrders > 0) {
+                    taskFinished = true;
+                }
+                if(taskFinished) {
+                    if(waitTime > 0) {
+                        waitTime -= Time.deltaTime;
+                    } else {
+                        Tutorial("Good Job! Now complete orders until the flight time ends and try to get all 3 stars!");
+                        tutorialIndex++;
+                        taskFinished = false;
+                        waitTime = 4f;
+                    }
+                }
+            }
+        }
     }
+
 
     public void exit() {
         Time.timeScale = 1f;

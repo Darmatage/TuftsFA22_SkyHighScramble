@@ -48,6 +48,8 @@ public class GameHandler : MonoBehaviour
     public bool tutorial;
     public GameObject wall;
 
+    public GameObject tutorialwall;
+
 
     void Start()
     {
@@ -59,6 +61,12 @@ public class GameHandler : MonoBehaviour
         for (int r = 0; r < numButtons[LevelHandler.playlev]; r++)
         {
             buttons[r].SetActive(true);
+        }
+
+        if(LevelHandler.playlev == 0) {
+            tutorialwall.SetActive(true);
+        } else {
+            tutorialwall.SetActive(false);
         }
 
 
@@ -83,15 +91,23 @@ public class GameHandler : MonoBehaviour
 
 
         //cap the number of npcs to seat #s
-        if (numNPC[LevelHandler.playlev] > spots.Length)
+        if(LevelHandler.playlev == 0) {
+            numNPC[LevelHandler.playlev] = 3;
+        } else if (numNPC[LevelHandler.playlev] > spots.Length) {
             numNPC[LevelHandler.playlev] = spots.Length;
+        }
 
         customer = new OrderSpawner[numNPC[LevelHandler.playlev]];
         int tempNPC = numNPC[LevelHandler.playlev];
         int fillNum = 0;
         while (tempNPC > 0)
         {
-            int spotNum = Random.Range(0, spots.Length);
+            int spotNum = 0;
+            if(LevelHandler.playlev == 0) {
+                spotNum = Random.Range(0, 3);
+            } else {
+                spotNum = Random.Range(0, spots.Length);
+            }
             if ((spots[spotNum].tag != "hasPlayer") && (spotNum < npcsize))
             {
                 GameObject nick = Instantiate(defaultNPC, spots[spotNum].transform.position, Quaternion.identity);

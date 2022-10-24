@@ -14,7 +14,7 @@ public class PlayerPickupDrop : MonoBehaviour
 
     private ObjectGrab objectGrab;
     private BoxPickup bp;
-    public bool grabbing;
+    public static bool grabbing;
     public Image button;
     private string curTag;
 
