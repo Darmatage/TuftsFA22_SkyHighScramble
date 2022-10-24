@@ -2298,7 +2298,7 @@ AudioSource:
   m_GameObject: {fileID: 1082639128}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -5219494684697217425, guid: 48e8283b49c5344f6bb773c236b87467, type: 2}
   m_audioClip: {fileID: 8300000, guid: c93c6eed63f9e4c119a5791bfc0d5d44, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
@@ -2409,9 +2409,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1082639128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92e415d2d1f73434692f01fa99085490, type: 3}
+  m_Script: {fileID: 11500000, guid: 919bfcae468cb4261bd2d27d2de92bd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterMixer: {fileID: 24100000, guid: 48e8283b49c5344f6bb773c236b87467, type: 2}
 --- !u!1 &1113733131
 GameObject:
   m_ObjectHideFlags: 0
@@ -3150,16 +3151,28 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5269829320521590885, guid: c8b29429b3b7040e59b82fed19ad6a93, type: 3}
+      propertyPath: m_MaxValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5269829320521590885, guid: c8b29429b3b7040e59b82fed19ad6a93, type: 3}
+      propertyPath: m_MinValue
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5269829320521590885, guid: c8b29429b3b7040e59b82fed19ad6a93, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5269829320521590885, guid: c8b29429b3b7040e59b82fed19ad6a93, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1682766609}
+      objectReference: {fileID: 1682766612}
     - target: {fileID: 5269829320521590885, guid: c8b29429b3b7040e59b82fed19ad6a93, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetVolume
+      value: setSFXLevel
       objectReference: {fileID: 0}
     - target: {fileID: 5269829320521590885, guid: c8b29429b3b7040e59b82fed19ad6a93, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: AudioManager, Assembly-CSharp
+      value: UpdateSFX, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5269829320521590886, guid: c8b29429b3b7040e59b82fed19ad6a93, type: 3}
       propertyPath: m_Pivot.x
@@ -4070,7 +4083,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1682766611}
   - component: {fileID: 1682766610}
-  - component: {fileID: 1682766609}
+  - component: {fileID: 1682766612}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -4078,18 +4091,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1682766609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682766608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 625a13c0649004a968172265f5d85346, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &1682766610
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4099,7 +4100,7 @@ AudioSource:
   m_GameObject: {fileID: 1682766608}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2663652959255349268, guid: 48e8283b49c5344f6bb773c236b87467, type: 2}
   m_audioClip: {fileID: 8300000, guid: d3e9d57e967e94540a0803eff40d2e0b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -4201,6 +4202,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1682766612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682766608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919bfcae468cb4261bd2d27d2de92bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterMixer: {fileID: 24100000, guid: 48e8283b49c5344f6bb773c236b87467, type: 2}
 --- !u!1 &1686437673
 GameObject:
   m_ObjectHideFlags: 0
@@ -4860,12 +4874,20 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5269829320521590885, guid: c8b29429b3b7040e59b82fed19ad6a93, type: 3}
+      propertyPath: m_MinValue
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5269829320521590885, guid: c8b29429b3b7040e59b82fed19ad6a93, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1082639131}
     - target: {fileID: 5269829320521590885, guid: c8b29429b3b7040e59b82fed19ad6a93, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetVolume
+      value: setMusicLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5269829320521590885, guid: c8b29429b3b7040e59b82fed19ad6a93, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UpdateSFX, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5269829320521590886, guid: c8b29429b3b7040e59b82fed19ad6a93, type: 3}
       propertyPath: m_Pivot.x

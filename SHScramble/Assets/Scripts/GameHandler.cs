@@ -50,6 +50,8 @@ public class GameHandler : MonoBehaviour
 
     public GameObject tutorialwall;
 
+    [SerializeField] audioforNPC soundGenerator;
+
 
     void Start()
     {
@@ -189,7 +191,10 @@ public class GameHandler : MonoBehaviour
             Cursor.visible = true;
             gameTime = 0;
 
-            this.GetComponent<PauseMenu>().Win(doneOrders, ordersNeeded[LevelHandler.playlev]); 
+            this.GetComponent<PauseMenu>().Win(doneOrders, ordersNeeded[LevelHandler.playlev]);
+            
+            soundGenerator.audioSource.clip = soundGenerator.NPCsound[0];
+            soundGenerator.audioSource.Play(); 
         }
 
         // if (happiness <= 0)

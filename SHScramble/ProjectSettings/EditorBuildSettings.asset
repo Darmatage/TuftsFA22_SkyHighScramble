@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/StartPage.unity
     guid: 21a209e2b91154865bd1ea751f616c5e
   - enabled: 1
+    path: Assets/Scenes/Beginning.unity
+    guid: 94b3c06d2d059ea40bbffcbca2e3d1c3
+  - enabled: 1
     path: Assets/Scenes/Clouds.unity
     guid: 00f05281efe349f44b8f6aa7c2cd9335
   - enabled: 0
@@ -23,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WorldMap.unity
     guid: 4ef56cbd3e0784f4e8c12ebacf65f821
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: bf990764cdd57499988d29898d599efe
   - enabled: 1
     path: Assets/Scenes/startV2.unity
     guid: 6ae4c5f82fcf8425a8f916e86258a0ae

@@ -51,8 +51,8 @@ public class PlayerPickupDrop : MonoBehaviour
             else
             {
                 objectGrab.Drop(curTag);
-                soundGenerator.audioSource.clip = soundGenerator.itemSound[1];
-                soundGenerator.audioSource.Play();
+                // soundGenerator.audioSource.clip = soundGenerator.itemSound[1];
+                // soundGenerator.audioSource.Play();
                 objectGrab = null;
                 grabbing = false;
             }

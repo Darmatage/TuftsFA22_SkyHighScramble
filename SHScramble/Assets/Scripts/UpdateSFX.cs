@@ -11,4 +11,12 @@ public class UpdateSFX : MonoBehaviour
     public void setSFXLevel(float value) {
         masterMixer.SetFloat("audioExposed", value);
     }
+
+    public void setMusicLevel(float value) {
+        masterMixer.SetFloat("musicExposed", value);
+    }
+
+    void Awake() {
+        DontDestroyOnLoad(transform.gameObject);
+    }
 }

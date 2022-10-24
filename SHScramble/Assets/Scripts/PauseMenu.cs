@@ -110,7 +110,7 @@ public class PauseMenu : MonoBehaviour
     public void exit() {
         Time.timeScale = 1f;
         GameIsPaused = false;
-        SceneManager.LoadScene("WorldMap");
+        SceneManager.LoadScene("End");
     }
 
     public void restart() {
