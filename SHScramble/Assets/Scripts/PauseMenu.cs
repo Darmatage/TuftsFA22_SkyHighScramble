@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject[] stars;
 
     public GameObject pauseMenuUI;
+    public GameObject Darken;
     public GameObject tutorialUI;
 
     // Start is called before the first frame update
@@ -63,6 +64,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume() {
         pauseMenuUI.SetActive(false);
+        Darken.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -71,6 +73,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause() {
         pauseMenuUI.SetActive(true);
+        Darken.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;

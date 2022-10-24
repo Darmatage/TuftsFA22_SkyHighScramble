@@ -16,10 +16,6 @@ public class LevelLoaderMAIN : MonoBehaviour
     {
         IntoNextLevel();
     }
-    
-    // void Update()
-    // {
-    // }
 
     public void LoadNextLevel()
     {
@@ -43,7 +39,6 @@ public class LevelLoaderMAIN : MonoBehaviour
             yield return new WaitForSeconds(transitionTime);
             if(load)
                 SceneManager.LoadScene(index);
-            yield return new WaitForSeconds(transitionTime);
             canva.SetActive(false);
         }
     }

@@ -9,36 +9,11 @@ public class LoadMap : MonoBehaviour
     // public GameObject loadScreen;
     // public Slider slider;
     // public Text text;
+    public LevelLoaderMAIN ll;
 
-    public void LoadNextLevel() {
-        StartCoroutine(LoadLevel());
+    public void LoadLevel() {
+        ll.scene = "Clouds";
+        ll.LoadNextLevel();
     }
 
-    IEnumerator LoadLevel() {
-        //loadScreen.setActive(true);
-
-        AsyncOperation operation = SceneManager.LoadSceneAsync("Clouds");
-
-        // operation.allowSceneActivation = false;
-        // while (!operation.isDone)
-        // {
-        //     // slider.value = operation.progress;
-        //     //Output the current progress
-        //     // text.text = "Loading progress: " + (operation.progress * 100) + "%";
-
-        //     // Check if the load has finished
-        //     if (operation.progress >= 0.9f)
-        //     {
-        //         // slider.value = 1;
-        //         // //Change the Text to show the Scene is ready
-        //         // text.text = "Press the space bar to continue";
-        //         // //Wait to you press the space key to activate the Scene
-        //         if (Input.GetKeyDown(KeyCode.Space))
-        //             //Activate the Scene
-        //             operation.allowSceneActivation = true;
-        //     }
-
-             yield return null;
-        // }
-    }
 }
