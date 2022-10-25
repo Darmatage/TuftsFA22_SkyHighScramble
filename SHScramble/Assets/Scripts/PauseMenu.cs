@@ -176,6 +176,11 @@ public class PauseMenu : MonoBehaviour
         if(LevelHandler.curstars[LevelHandler.playlev] < j) {
             LevelHandler.curstars[LevelHandler.playlev] = j;
         }
+        if(j >= 1)
+        {
+            LevelHandler.levUnlocked[LevelHandler.playlev + 1] = true;
+            LevelHandler.curlev += 1;
+        }
         //StartCoroutine(waiter(j));
     }
 

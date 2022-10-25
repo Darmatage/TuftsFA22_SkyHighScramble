@@ -9,13 +9,13 @@ public class GlobeControl : MonoBehaviour
     public GameObject[] levels;
     public int mult = 3;
     public LevelHandler handle;
-    private int unlockedlev;
+    public int unlockedlev;
     
     
     // Start is called before the first frame update
     void Start()
     {
-        unlockedlev = handle.curlev;
+        unlockedlev = LevelHandler.curlev;
         for (int i = 0; i < unlockedlev; i++)
         {
             levels[i].SetActive(true);
@@ -31,8 +31,8 @@ public class GlobeControl : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
             transform.Rotate(0f, 0f, -0.05f * mult, Space.Self);
         if (Input.GetKey(KeyCode.W))
-            transform.Rotate(0f, -0.05f * mult, 0f, Space.Self);
+            transform.Rotate(0f, 0f, 0.05f * mult, Space.Self);
         if (Input.GetKey(KeyCode.S))
-            transform.Rotate(0f, 0.05f * mult, 0f, Space.Self);
+            transform.Rotate(0f, 0f, -0.05f * mult, Space.Self);
     }
 }
