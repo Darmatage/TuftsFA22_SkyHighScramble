@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
 
     public GameHandler gameHandler;
 
-    public float waitTime = 5f;
+    public float waitTime = .5f;
     public float tutorialIndex = 0;
     public bool taskFinished = false;
 
@@ -53,9 +53,9 @@ public class PauseMenu : MonoBehaviour
                 if(waitTime > 0) {
                     waitTime -= Time.deltaTime;
                 } else {
-                    Tutorial("Use [WASD] to walk");
+                    Tutorial("Use [WASD] to walk and shift to run");
                     tutorialIndex++;
-                    waitTime = 4f;
+                    waitTime = 3f;
                 }
             } else if(tutorialIndex == 2) {
                 if(Input.GetKeyDown("a") || Input.GetKeyDown("w") || Input.GetKeyDown("s") || Input.GetKeyDown("d")) {
@@ -68,7 +68,7 @@ public class PauseMenu : MonoBehaviour
                         Tutorial("The front of the plane has item buttons. Press E to get an item and E to drop items!");
                         tutorialIndex++;
                         taskFinished = false;
-                        waitTime = 4f;
+                        waitTime = 3f;
                     }
                 }      
             } else if(tutorialIndex == 3) {
@@ -82,7 +82,7 @@ public class PauseMenu : MonoBehaviour
                         Tutorial("Talk to an customer that has an eclamation point by pressing E. Bring the customer the order it asks for to get a point!");
                         tutorialIndex++;
                         taskFinished = false;
-                        waitTime = 4f;
+                        waitTime = 3f;
                     }
                 }
             } else if(tutorialIndex == 4) {
@@ -96,7 +96,7 @@ public class PauseMenu : MonoBehaviour
                         Tutorial("Good Job! Now complete orders until the flight time ends and try to get all 3 stars!");
                         tutorialIndex++;
                         taskFinished = false;
-                        waitTime = 4f;
+                        waitTime = 3f;
                     }
                 }
             }
@@ -107,12 +107,14 @@ public class PauseMenu : MonoBehaviour
     public void exit() {
         Time.timeScale = 1f;
         GameIsPaused = false;
+        PlayerPickupDrop.grabbing = false;
         SceneManager.LoadScene("End");
     }
 
     public void restart() {
         Time.timeScale = 1f;
         GameIsPaused = false;
+        PlayerPickupDrop.grabbing = false;
         SceneManager.LoadScene("Clouds");
     }
 

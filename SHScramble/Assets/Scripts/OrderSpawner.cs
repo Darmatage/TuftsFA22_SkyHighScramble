@@ -129,12 +129,12 @@ public class OrderSpawner : MonoBehaviour
  
     public void spawnOrder() {
         timer = 25.0f;
-        if(LevelHandler.playlev == 0) {
+        if(LevelHandler.playlev < 3) {
             multiOrder = 0;
-        } else if(LevelHandler.playlev >= 2) {
-            multiOrder = 1;
+        } else if(LevelHandler.playlev > 4) {
+            multiOrder = 2;
         } else {
-            multiOrder = Random.Range(0, 2);
+            multiOrder = Random.Range(0, 3);
         }
         orderpart.Stop();
         current = "order";
@@ -143,7 +143,7 @@ public class OrderSpawner : MonoBehaviour
         soundGenerator.audioSource.clip = soundGenerator.NPCsound[2];
         soundGenerator.audioSource.Play();
 
-        if(multiOrder == 0) {
+        if(multiOrder != 2) {
             order = setOrder(item);
         } else {
             order1 = setOrder(multiItem1);
@@ -191,7 +191,7 @@ public class OrderSpawner : MonoBehaviour
                 string tag = other.gameObject.tag;
                 if (tag == order || tag == order1 || tag == order2) {
                     Destroy(other.gameObject);
-                    if(multiOrder == 0) {
+                    if(multiOrder != 2) {
                         item.SetActive(false);
                         finishOrder();
                     }
