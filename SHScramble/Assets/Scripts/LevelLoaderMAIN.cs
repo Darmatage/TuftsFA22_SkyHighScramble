@@ -14,32 +14,30 @@ public class LevelLoaderMAIN : MonoBehaviour
     // Update is called once per frame
     void Start()
     {
-        IntoNextLevel();
+        canva.SetActive(false);
+        if (!top)
+            IntoNextLevel();
     }
 
     public void LoadNextLevel()
     {
         canva.SetActive(true);
-        StartCoroutine(LoadLevel(scene, 1, true, top));
+        StartCoroutine(LoadLevel(scene, 1, true));
     }
 
     public void IntoNextLevel()
     {
         canva.SetActive(true);
-        StartCoroutine(LoadLevel(scene, 0, false, top));
+        StartCoroutine(LoadLevel(scene, 0, false));
     }
 
-    IEnumerator LoadLevel(string index, int i, bool load, bool toppy)
+    IEnumerator LoadLevel(string index, int i, bool load)
     {
-        if(toppy && !load)
-            Debug.Log("hi");
-        else
-        {
-            vp[i].Play();
-            yield return new WaitForSeconds(transitionTime);
-            if(load)
-                SceneManager.LoadScene(index);
-            canva.SetActive(false);
-        }
+        vp[i].Play();
+        yield return new WaitForSeconds(transitionTime);
+        if(load)
+            SceneManager.LoadScene(index);
+        yield return new WaitForSeconds(0.5f);
+        canva.SetActive(false);
     }
 }

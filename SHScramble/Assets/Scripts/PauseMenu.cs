@@ -33,19 +33,16 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)) {
-            if(GameIsPaused) {
+            if(GameIsPaused && !tutorialUI.activeSelf) {
                 Resume();
             } else {
                 Pause();
             }
         }
         if(Input.GetKeyDown(KeyCode.Space)) {
-            if(GameIsPaused) {
+            if(GameIsPaused && tutorialUI.activeSelf) {
                 Resume();
                 tutorialUI.SetActive(false);
-            }
-            else {
-                Tutorial("Use [WASD] to walk");
             }
         }
         if(LevelHandler.playlev == 0) {

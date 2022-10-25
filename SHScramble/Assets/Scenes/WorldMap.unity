@@ -1981,57 +1981,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742226631}
   m_Mesh: {fileID: 4493585093827132993, guid: efd4a0fda85aaf6439b6f29f0a0f13ed, type: 3}
---- !u!1 &765779402
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 765779404}
-  - component: {fileID: 765779403}
-  m_Layer: 0
-  m_Name: LevelLoader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &765779403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765779402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3b0e3db464aba54398e16c89e0cfb2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vp:
-  - {fileID: 1992349416}
-  - {fileID: 1992349416}
-  canva: {fileID: 1406010497}
-  transitionTime: 1
-  scene: Clouds
-  top: 0
---- !u!4 &765779404
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765779402}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 364.14664, y: 181.28815, z: 1686.6589}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &820756764
 GameObject:
   m_ObjectHideFlags: 0
@@ -3606,7 +3555,7 @@ MonoBehaviour:
   canva: {fileID: 1406010497}
   transitionTime: 1
   scene: Clouds
-  top: 0
+  top: 1
 --- !u!1 &1343624114
 GameObject:
   m_ObjectHideFlags: 0
@@ -4033,7 +3982,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8d523399ba893f4d8f2c0de56c767b6, type: 2}
+  - {fileID: 2100000, guid: a1f7f9976b23e09429068288dafb5212, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5239,7 +5188,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8d523399ba893f4d8f2c0de56c767b6, type: 2}
+  - {fileID: 2100000, guid: a1f7f9976b23e09429068288dafb5212, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5850,7 +5799,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1b676115c825e7348a6d803f23ef39be, type: 2}
+  - {fileID: 2100000, guid: 0041c2900678a4a43afef065e095c382, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6297,7 +6246,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8d523399ba893f4d8f2c0de56c767b6, type: 2}
+  - {fileID: 2100000, guid: a1f7f9976b23e09429068288dafb5212, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7304,7 +7253,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a8d523399ba893f4d8f2c0de56c767b6, type: 2}
+  - {fileID: 2100000, guid: a1f7f9976b23e09429068288dafb5212, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7399,7 +7348,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5249262493894407854}
-  m_LocalRotation: {x: 0.0000023692846, y: 0.0000004917383, z: 0.9999932, w: 0.003700614}
+  m_LocalRotation: {x: 0.16478597, y: -0.37186056, z: 0.37011537, w: -0.8352126}
   m_LocalPosition: {x: 0, y: 0, z: 0.008089911}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7412,7 +7361,7 @@ RectTransform:
   - {fileID: 87477306}
   m_Father: {fileID: 1431278962}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 539.576}
+  m_LocalEulerAnglesHint: {x: 0, y: 48, z: 312.2}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.027328232, y: 0.044542752}

@@ -55,7 +55,8 @@ public class GameHandler : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(ReadySet());
+        if (!tutorial)
+            StartCoroutine(ReadySet());
         
         
           
