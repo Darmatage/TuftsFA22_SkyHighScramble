@@ -12,6 +12,10 @@ public class PlayerCam : MonoBehaviour
     float xRotation;
     float yRotation;
 
+    public void setSFXLevel(float value) {
+        sensitivity = value;
+    }
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;

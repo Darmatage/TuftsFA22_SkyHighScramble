@@ -23,6 +23,7 @@ public class GameHandler : MonoBehaviour
     public int[] numButtons;
     public GameObject canva;
     public VideoPlayer videop;
+    public AudioSource audiop;
 
     public int numOrders;
     public float happiness = 100f;
@@ -47,6 +48,7 @@ public class GameHandler : MonoBehaviour
     public GameObject parenty;
     public bool tutorial;
     public GameObject wall;
+    public GameObject ready;
 
     public GameObject tutorialwall;
 
@@ -55,8 +57,19 @@ public class GameHandler : MonoBehaviour
 
     void Start()
     {
+        if(LevelHandler.playlev == 0) {
+            tutorial = true;
+            tutorialwall.SetActive(true);
+        } else {
+            tutorialwall.SetActive(false);
+            tutorial = false;
+        }
         if (!tutorial)
             StartCoroutine(ReadySet());
+        else
+        {
+            ready.SetActive(false);
+        }
         
         
           
@@ -66,11 +79,6 @@ public class GameHandler : MonoBehaviour
             buttons[r].SetActive(true);
         }
 
-        if(LevelHandler.playlev == 0) {
-            tutorialwall.SetActive(true);
-        } else {
-            tutorialwall.SetActive(false);
-        }
 
 
         startext[2].text = "" + ordersNeeded[LevelHandler.playlev];
@@ -85,12 +93,8 @@ public class GameHandler : MonoBehaviour
         else
             sun.GetComponent<Light>().color = Color.white;
 
-        int npcsize = 24;
-        if(tutorial)
-        {
-            npcsize = 12;
-            wall.SetActive(true);
-        }
+        int npcsize = 12;
+        wall.SetActive(true);
 
 
         //cap the number of npcs to seat #s
@@ -231,9 +235,10 @@ public class GameHandler : MonoBehaviour
 
     IEnumerator ReadySet()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.6f);
         canva.SetActive(true);
         videop.Play();
+        audiop.Play();
         yield return new WaitForSeconds(3.0f);
         canva.SetActive(false);
     }
